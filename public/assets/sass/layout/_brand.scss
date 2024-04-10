@@ -1,0 +1,78 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Brand CSS
+----------------------------------------*/
+.tj-brand-section {
+    background: var(--tj-color-theme-secondary);
+    padding: 60px 0;
+    position: relative;
+    z-index: 2;
+    .tj-brand-slider {
+        .swiper-wrapper {
+            align-items: center;
+        }
+    }
+    .brand-sec-shape-wrapper {
+        .left-lg-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 600px;
+            width: 100%;
+            z-index: -1;
+        }
+        .left-sm-one {
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            max-width: 60px;
+            width: 100%;
+            z-index: -1;
+        }
+        .left-sm-two {
+            position: absolute;
+            bottom: 0;
+            left: 4%;
+            max-width: 80px;
+            width: 100%;
+            z-index: -1;
+        }
+        .right-lg-shape {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            max-width: 510px;
+            width: 100%;
+            z-index: -1;
+        }
+        .right-sm-shape {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            max-width: 130px;
+            width: 100%;
+            z-index: -1;
+        }
+    }
+    @media #{$xs} {
+        .left-sm-two {
+            display: none;
+        }
+    }
+}
+
+.brand-item {
+    a {
+        display: inline-block;
+        opacity: 0.5;
+        @include transition(all 0.3s ease-in-out 0s);
+    }
+    &:hover {
+        a {
+            opacity: 1;
+        }
+    }
+}
+/* !END: Theme Brand CSS */

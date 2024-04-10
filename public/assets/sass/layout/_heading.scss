@@ -1,0 +1,226 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Heading CSS
+----------------------------------------*/
+
+.tj-sec-heading {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 3;
+    .sub-title {
+        color: var(--tj-color-theme-secondary);
+        font-size: 25px;
+        letter-spacing: 5px;
+        font-weight: var(--tj-fw-medium);
+        margin-bottom: 20px;
+        display: block;
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    }
+    .sec-title {
+        color: var(--tj-color-theme-primary);
+        margin-bottom: 30px;
+        @media #{$md, $sm} {
+            font-size: 38px;
+        }
+        @media #{$xs} {
+            font-size: 26px;
+            line-height: 1.5;
+        }
+        span {
+            color: var(--tj-color-heading-primary);
+            font-weight: var(--tj-fw-elight);
+            position: relative;
+            z-index: 1;
+            padding-left: 110px;
+            @media #{$sm, $xs} {
+                padding-left: 70px;
+            }
+            &::before {
+                position: absolute;
+                content: "";
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                width: 88px;
+                height: 2px;
+                background: var(--tj-color-theme-primary);
+                z-index: 2;
+                @media #{$sm, $xs} {
+                    width: 50px;
+                }
+            }
+        }
+    }
+}
+
+.tj-sec-heading-two {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 3;
+    .sub-title {
+        color: var(--tj-color-theme-secondary);
+        font-size: 25px;
+        letter-spacing: 5px;
+        font-weight: var(--tj-fw-medium);
+        margin-bottom: 20px;
+        display: block;
+        position: relative;
+        border-radius: 20px;
+        &::before {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            left: 0;
+            width: 95px;
+            height: 2px;
+            border-radius: 50px;
+            background: var(--tj-color-theme-primary);
+            @media #{$sm, $xs} {
+                width: 60px;
+            }
+        }
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    }
+    .title {
+        margin-bottom: 30px;
+        @media #{$md, $sm} {
+            font-size: 38px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        @media #{$xs} {
+            font-size: 26px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        span {
+            color: var(--tj-color-theme-primary);
+            font-weight: var(--tj-fw-light);
+        }
+    }
+}
+
+.tj-sec-heading-two.text-center {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 3;
+    .sub-title {
+        color: var(--tj-color-theme-secondary);
+        font-size: 25px;
+        letter-spacing: 5px;
+        font-weight: var(--tj-fw-medium);
+        margin-bottom: 20px;
+        display: block;
+        position: relative;
+        border-radius: 20px;
+        &::before {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95px;
+            height: 2px;
+            border-radius: 50px;
+            background: var(--tj-color-theme-primary);
+            @media #{$sm, $xs} {
+                width: 60px;
+            }
+        }
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    }
+    .title {
+        margin-bottom: 30px;
+        .primary-color {
+            color: var(--tj-color-theme-primary);
+            font-weight: var(--tj-fw-light);
+        }
+    }
+}
+
+.tj-sec-heading-three {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 3;
+    .sub-title {
+        color: var(--tj-color-theme-primary);
+        font-size: 25px;
+        letter-spacing: 5px;
+        font-weight: var(--tj-fw-medium);
+        margin-bottom: 20px;
+        display: block;
+        position: relative;
+        border-radius: 20px;
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    }
+    .title {
+        margin-bottom: 0;
+        @media #{$md, $sm} {
+            font-size: 38px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        @media #{$xs} {
+            font-size: 26px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        span {
+            color: var(--tj-color-theme-primary);
+            font-weight: var(--tj-fw-light);
+        }
+    }
+}
+
+.tj-sec-heading-four {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 3;
+    .sub-title {
+        color: var(--tj-color-theme-secondary);
+        font-size: 25px;
+        letter-spacing: 5px;
+        font-weight: var(--tj-fw-medium);
+        margin-bottom: 20px;
+        display: block;
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    }
+    .sec-title {
+        color: var(--tj-color-theme-primary);
+        margin-bottom: 0;
+        @media #{$md, $sm} {
+            font-size: 38px;
+        }
+        @media #{$xs} {
+            font-size: 26px;
+            line-height: 1.5;
+        }
+        span {
+            color: var(--tj-color-theme-secondary);
+            font-weight: var(--tj-fw-elight);
+        }
+    }
+}
+
+/* !END: Theme Heading CSS */

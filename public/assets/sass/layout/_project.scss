@@ -1,0 +1,215 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Project CSS
+----------------------------------------*/
+.tj-project-section {
+    padding-top: 120px;
+    padding-bottom: 90px;
+    background: var(--tj-color-theme-bg);
+    @media #{$lg, $md, $sm, $xs} {
+        padding-top: 80px;
+        padding-bottom: 50px;
+    }
+    .tj-sec-heading-two {
+        margin-left: 0;
+        @media #{$lg, $md, $sm, $xs} {
+            margin-bottom: 15px;
+        }
+        .title {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.project-top-content-area {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    @media #{$lg, $md, $sm, $xs} {
+        margin-bottom: 40px;
+    }
+    .project-desc {
+        max-width: 485px;
+        p {
+            margin-bottom: 0;
+            font-size: 18px;
+            line-height: 2.1;
+            @media #{$sm, $xs} {
+                font-size: 16px;
+                line-height: 1.9;
+            }
+        }
+    }
+}
+
+.tj-project-item {
+    padding-bottom: 30px;
+    transition: 0.4s;
+    .project-image {
+        position: relative;
+        z-index: 1;
+        img {
+            width: 100%;
+        }
+        &::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: linear-gradient(0deg, rgba(24, 24, 24, 0.96) 0%, rgba(58, 58, 58, 0) 100%);
+            mix-blend-mode: hard-light;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            z-index: 2;
+        }
+        .project-content {
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            @media #{$md, $sm, $xs} {
+                left: 30px;
+            }
+            .title {
+                color: var(--tj-color-common-white);
+                margin-bottom: 8px;
+                transition: 0.1s;
+                @media #{$md, $sm, $xs} {
+                    font-size: 25px;
+                }
+                &:hover {
+                    color: var(--tj-color-theme-primary);
+                }
+            }
+            .sub-title {
+                font-size: 18px;
+                color: var(--tj-color-common-white);
+                font-weight: var(--tj-fw-medium);
+                font-family: var(--tj-ff-heading);
+            }
+        }
+    }
+    &:hover {
+        .project-image {
+            &::before {
+                opacity: 1;
+                visibility: visible;
+            }
+            .project-content {
+                bottom: 50px;
+                opacity: 1;
+                visibility: visible;
+                @media #{$md, $sm, $xs} {
+                    bottom: 30px;
+                }
+            }
+        }
+    }
+}
+
+.tj-project-section-two {
+    padding-top: 120px;
+    position: relative;
+    z-index: 2;
+    .project-sec-shape {
+        position: absolute;
+        top: 18%;
+        right: 14%;
+        max-width: 136px;
+        width: 100%;
+        z-index: -1;
+    }
+    .tj-sec-heading-three {
+        max-width: 610px;
+        width: 100%;
+        margin-bottom: 60px;
+    }
+    @media #{$xl, $lg} {
+        .project-sec-shape {
+            right: 5%;
+            max-width: 115px;
+        }
+    }
+    @media #{$md, $sm, $xs} {
+        padding-top: 80px;
+        .tj-sec-heading-three {
+            margin-bottom: 40px;
+        }
+        .project-sec-shape {
+            display: none;
+        }
+    }
+}
+
+.tj-project-item-two {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    min-height: 314px;
+    max-height: 314px;
+    @include transition(all 0.3s ease-in-out 0s);
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: -100px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, var(--tj-color-theme-primary) 0%, rgba(50, 60, 69, 0.00) 87.9%);
+        opacity: 0;
+        visibility: hidden;
+    }
+    .project-images {
+        a {
+            display: inline-block;
+            width: 100%;
+            img {
+                width: 100%;
+                height: 314px;
+                object-fit: cover;
+            }
+        }
+    }
+    .project-content {
+        position: absolute;
+        bottom: 0;
+        left: 30px;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(all 0.3s ease-in-out 0s);
+        .title {
+            margin-bottom: 5px;
+            a {
+                color: var(--tj-color-common-white);
+            }
+        }
+        span {
+            color: var(--tj-color-theme-secondary);
+            font-family: var(--tj-ff-heading);
+            font-size: 18px;
+            font-weight: var(--tj-fw-medium);
+        }
+    }
+    &:hover {
+        &::before {
+            opacity: 1;
+            visibility: visible;
+            bottom: 0;
+        }
+        .project-content {
+            bottom: 20px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+/* !END: Theme Project CSS */

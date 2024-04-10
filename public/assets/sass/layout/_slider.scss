@@ -1,0 +1,305 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Slider CSS
+----------------------------------------*/
+.tj-slider-section {
+    position: relative;
+    padding-bottom: 120px;
+    @media #{$md, $sm, $xs} {
+        padding-bottom: 70px;
+    }
+    .swiper-pagination {
+        width: auto;
+        right: 130px;
+        left: auto;
+        bottom: auto;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @media #{$xl, $lg} {
+            right: 75px;
+        }
+        @media #{$md, $sm, $xs} {
+            right: 10px;
+        }
+        .swiper-pagination-bullet {
+            cursor: pointer;
+            background: transparent;
+            position: relative;
+            color: var(--tj-color-common-white);
+            opacity: 1;
+            display: block;
+            font-size: 17px;
+            font-weight: var(--tj-fw-medium);
+            margin: 0 0 20px 0;
+            font-family: var(--tj-ff-body);
+            transition: 0.1s;
+            height: 25px;
+            padding-left: 15px;
+            width: 10px;
+            box-sizing: content-box;
+            @media #{$xs} {
+                font-size: 15px;
+            }
+            &::after {
+                position: absolute;
+                content: "0";
+                top: 0;
+                right: 10px;
+                left: auto;
+                transition: 0.1s;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .swiper-pagination-bullet-active {
+            color: var(--tj-color-theme-primary);
+            @media #{$xs} {
+                font-size: 15px;
+            }
+            &::before {
+                position: absolute;
+                content: "";
+                top: 12px;
+                left: 100%;
+                width: 47px;
+                height: 2px;
+                background: var(--tj-color-theme-primary);
+                margin-left: 20px;
+                @media #{$md, $sm, $xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    .slider-sec-shape {
+        position: absolute;
+        left: 10%;
+        bottom: 35%;
+        z-index: 3;
+
+        @media #{$xxxl} {
+            bottom: 30%;
+            left: 5%;
+        }
+        @media #{$xxl, $xl} {
+            bottom: 25%;
+            left: 3%;
+        }
+        @media #{$lg} {
+            bottom: 32%;
+            left: 2%;
+        }
+
+        @media #{$md, $sm, $xs} {
+            display: none;
+        }
+    }
+}
+
+.tj-slider-item {
+    min-height: 964px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    @media #{$xl, $lg} {
+        min-height: 850px;
+    }
+    @media #{$md, $sm, $xs} {
+        min-height: 720px;
+    }
+    .slider-bg-image {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 2;
+    }
+    .slider-content {
+        padding-top: 110px;
+        padding-bottom: 20px;
+        max-width: 1075px;
+        position: relative;
+        z-index: 3;
+        @media #{$xl, $lg, $md, $sm, $xs} {
+            padding-top: 80px;
+        }
+        @media #{$md, $sm, $xs} {
+            padding-bottom: 10px;
+        }
+        .slider-text {
+            padding-left: 110px;
+            @media #{$md, $sm, $xs} {
+                padding-left: 70px;
+            }
+            @media #{$sm, $xs} {
+                padding-left: 0;
+            }
+        }
+        @media #{$md, $sm, $xs} {
+            max-width: 100%;
+        }
+        @media #{$xs} {
+            padding-right: 40px;
+        }
+        .slider-title {
+            color: var(--tj-color-common-white);
+            margin-bottom: 10px;
+            font-size: 110px;
+            line-height: 1.1;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition-delay: 1000ms;
+            transition-delay: 1000ms;
+            -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
+            transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
+            transition: transform 2000ms ease, opacity 2000ms ease;
+            transition: transform 2000ms ease, opacity 2000ms ease, -webkit-transform 2000ms ease;
+            @media #{$xl, $lg} {
+                font-size: 70px;
+            }
+            @media #{$md} {
+                font-size: 55px;
+                margin-bottom: 20px;
+            }
+            @media #{$sm} {
+                font-size: 45px;
+                margin-bottom: 20px;
+            }
+            @media #{$xs} {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+        }
+        .slider-sub-title {
+            color: var(--tj-color-common-white);
+            font-weight: var(--tj-fw-elight);
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            padding-left: 110px;
+            font-size: 90px;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition-delay: 1000ms;
+            transition-delay: 1000ms;
+            -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
+            transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
+            transition: transform 2000ms ease, opacity 2000ms ease;
+            transition: transform 2000ms ease, opacity 2000ms ease, -webkit-transform 2000ms ease;
+            @media #{$xl, $lg} {
+                font-size: 60px;
+            }
+            @media #{$md} {
+                font-size: 50px;
+            }
+            @media #{$sm, $xs} {
+                font-size: 30px;
+            }
+            @media #{$md, $sm} {
+                padding-left: 70px;
+            }
+            @media #{$xs} {
+                padding-left: 40px;
+            }
+            &::before {
+                position: absolute;
+                content: "";
+                width: 88px;
+                height: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                background: var(--tj-color-theme-primary);
+                transition: none;
+                @media #{$md, $sm} {
+                    width: 50px;
+                }
+                @media #{$xs} {
+                    width: 30px;
+                }
+            }
+            span {
+                color: var(--tj-color-theme-primary);
+                transition: none;
+            }
+        }
+        .desc {
+            max-width: 780px;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition-delay: 1000ms;
+            transition-delay: 1000ms;
+            -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
+            transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
+            transition: transform 2000ms ease, opacity 2000ms ease;
+            transition: transform 2000ms ease, opacity 2000ms ease, -webkit-transform 2000ms ease;
+            p {
+                margin-bottom: 0;
+                color: var(--tj-color-common-white);
+                font-size: 20px;
+                line-height: 2.1;
+                @media #{$md, $sm, $xs} {
+                    font-size: 16px;
+                }
+                @media #{$sm, $xs} {
+                    line-height: 1.9;
+                }
+            }
+        }
+        .slider-button {
+            margin-top: 40px;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition-delay: 700ms;
+            transition-delay: 700ms;
+            -webkit-transition: opacity 1500ms ease, -webkit-transform 1500ms ease;
+            transition: opacity 1500ms ease, -webkit-transform 1500ms ease;
+            transition: transform 1500ms ease, opacity 1500ms ease;
+            transition: transform 1500ms ease, opacity 1500ms ease, -webkit-transform 1500ms ease;
+            @media #{$md, $sm, $xs} {
+                margin-top: 30px;
+            }
+        }
+    }
+    .slider-sub-title {
+        -webkit-transform: translateX(125px);
+        transform: translateX(125px);
+    }
+    .slider-title {
+        -webkit-transform: translateY(-125px);
+        transform: translateY(-125px);
+    }
+    .slider-button,
+    .desc {
+        -webkit-transform: translateY(125px);
+        transform: translateY(125px);
+    }
+    &.swiper-slide-active {
+        .slider-sub-title,
+        .desc,
+        .slider-title,
+        .slider-button {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+        }
+    }
+}
+/* !END: Theme Slider CSS */

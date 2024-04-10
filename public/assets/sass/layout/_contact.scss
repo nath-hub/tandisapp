@@ -1,0 +1,203 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Contact CSS
+----------------------------------------*/
+.tj-contact-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background: var(--tj-color-theme-bg);
+    @media #{$md, $sm, $xs} {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    &.tj-contact-page {
+        padding-bottom: 0;
+    }
+    .tj-sec-heading-two {
+        .desc {
+            max-width: 535px;
+            p {
+                margin-bottom: 30px;
+                font-size: 18px;
+                line-height: 2.1;
+                @media #{$sm, $xs} {
+                    font-size: 16px;
+                    line-height: 1.9;
+                }
+            }
+        }
+    }
+}
+
+.tj-contact-section-two {
+    background: var(--tj-color-light-1);
+    padding-top: 120px;
+    padding-bottom: 120px;
+    position: relative;
+    z-index: 2;
+    .contact-bg-shape {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        max-width: 240px;
+        width: 100%;
+        z-index: -1;
+    }
+    .contact-bottom-shape {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        z-index: 1;
+    }
+    .contact-left-shape {
+        position: absolute;
+        left: 80px;
+        bottom: 0;
+        max-width: 145px;
+        width: 100%;
+        z-index: -1;
+    }
+    .contact-right-shape {
+        position: absolute;
+        right: 90px;
+        bottom: 0;
+        max-width: 105px;
+        width: 100%;
+        z-index: -1;
+    }
+    .tj-sec-heading-three {
+        .title {
+            margin-bottom: 20px;
+        }
+    }
+    @media #{$xxl, $xl, $lg, $md, $sm, $xs} {
+        .contact-right-shape,
+        .contact-left-shape,
+        .contact-bg-shape {
+            max-width: 90px;
+        }
+
+    }
+    @media #{$md, $sm, $xs} {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        .contact-bottom-shape {
+            bottom: -5px;
+        }
+        .form-box-three {
+            max-width: 100%;
+        }
+    }
+    @media #{$sm, $xs} {
+        .contact-bg-shape,
+        .contact-right-shape,
+        .contact-left-shape,
+        .contact-bottom-shape {
+            display: none;
+        }
+    }
+}
+
+.contact-left-content {
+    @media #{$md, $sm, $xs} {
+        margin-bottom: 50px;
+    }
+}
+
+.contact-left-content-two {
+    .desc {
+        margin-bottom: 30px;
+        p {
+            font-size: 18px;
+            line-height: 2.1;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    @media #{$md, $sm, $xs} {
+        margin-bottom: 50px;
+    }
+}
+
+.contact-map {
+    iframe {
+        width: 536px;
+        height: 227px;
+        @media #{$lg} {
+            width: 440px;
+        }
+        @media #{$lg, $md, $sm, $xs} {
+            width: 100%;
+        }
+    }
+}
+
+.contact-infos {
+    .contact-item {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .contact-icon {
+            font-size: 30px;
+            line-height: 1;
+            color: var(--tj-color-theme-secondary);
+        }
+        .contact-text {
+            .title {
+                margin-bottom: 5px;
+                 font-family: var(--tj-ff-body);
+                font-weight: var(--tj-fw-sbold);
+                font-size: 18px;
+            }
+            span {
+                font-size: 18px; 
+            }
+            a {
+                font-size: 18px;
+                &:hover {
+                    color: var(--tj-color-theme-primary);
+                }
+            }
+        }
+    }
+}
+
+.tj-contact-form {
+    .form-input {
+        margin-bottom: 24px;
+        textarea,
+        input[type="email"],
+        input[type="text"] {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(57, 202, 110, 0.6);
+            font-size: 14px;
+            padding: 18px 20px;
+            &::-ms-input-placeholder {
+                color: var(--tj-color-border-2);
+            }
+            &::placeholder {
+                color: var(--tj-color-border-2);
+            }
+        }
+        textarea {
+            resize: none;
+            min-height: 192px;
+            @media #{$sm, $xs} {
+                min-height: 150px;
+            }
+        }
+    }
+    .tj-contact-button {
+        margin-top: 6px;
+    }
+}
+
+
+
+/* !END: Theme Contact CSS */

@@ -1,0 +1,199 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Price CSS
+----------------------------------------*/
+.tj-price-section {
+    padding-top: 120px;
+    padding-bottom: 90px;
+    background: var(--tj-color-theme-bg);
+    @media #{$md, $sm, $xs} {
+        padding-top: 80px;
+        padding-bottom: 50px;
+    }
+    .tj-sec-heading-two {
+        max-width: 670px;
+        margin-left: 0;
+        @media #{$md, $sm, $xs} {
+            max-width: 100%;
+            margin-bottom: 25px;
+        }
+        .desc {
+            p {
+                margin-bottom: 0;
+                font-size: 18px;
+                line-height: 2.1;
+                @media #{$sm, $xs} {
+                    font-size: 16px;
+                    line-height: 1.9;
+                }
+            }
+        }
+    }
+}
+
+.price-top-content {
+    margin-bottom: 60px;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    @media #{$md, $sm, $xs} {
+        margin-bottom: 40px;
+        display: block;
+    }
+}
+
+.tj-price-item {
+    margin-bottom: 30px;
+    border: 1px solid var(--tj-color-border-3);
+    background: var(--tj-color-common-white);
+    padding: 36px;
+    position: relative;
+    z-index: 1;
+    @media #{$md, $sm, $xs} {
+        padding: 25px;
+    }
+    .save {
+        background: var(--tj-color-theme-primary);
+        color: var(--tj-color-common-white);
+        font-size: 14px;
+        padding: 6px 15px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        @media #{$md, $sm, $xs} {
+            top: 10px;
+            right: 10px;
+        }
+    }
+    .title {
+        margin-bottom: 12px;
+    }
+    .desc {
+        margin-bottom: 12px;
+        p {
+            line-height: 1.6;
+        }
+    }
+    .price-percent {
+        margin-bottom: 20px;
+        .price-number {
+            font-size: 50px;
+            color: var(--tj-color-theme-secondary);
+            font-family: var(--tj-ff-heading);
+            font-weight: var(--tj-fw-bold);
+            line-height: 1;
+            margin-right: 15px;
+            @media #{$md, $sm, $xs} {
+                font-size: 35px;
+                margin-right: 10px;
+            }
+            .price-percent {
+                font-size: 16px;
+                font-weight: var(--tj-fw-regular);
+                color: var(--tj-color-text-body);
+            }
+        }
+    }
+    .price-button {
+        margin-bottom: 30px;
+    }
+    .price-list {
+        ul {
+            .style-1 {
+                font-size: 17px;
+                font-weight: var(--tj-fw-medium);
+                color: var(--tj-color-theme-secondary);
+                position: relative;
+                margin-bottom: 15px;
+                z-index: 1;
+                padding-left: 50px;
+                @media #{$md, $sm, $xs} {
+                    font-size: 16px;
+                    padding-left: 40px;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                i {
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    display: inline-block;
+                    border-radius: 50%;
+                    color: var(--tj-color-common-white);
+                    background: var(--tj-color-theme-primary);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 2;
+                }
+            }
+            .style-2 {
+                font-size: 17px;
+                position: relative;
+                margin-bottom: 15px;
+                z-index: 1;
+                padding-left: 50px;
+                @media #{$md, $sm, $xs} {
+                    font-size: 16px;
+                    padding-left: 40px;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                i {
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    display: inline-block;
+                    border-radius: 50%;
+                    color: var(--tj-color-common-white);
+                    background: var(--tj-color-grey-3);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}
+
+.price-switcher {
+    border-radius: 10px;
+    border: 1px solid var(--tj-color-theme-primary);
+    background: var(--tj-color-light-2);
+    padding: 10px 11px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    @media #{$md, $sm, $xs} {
+        max-width: 250px;
+        gap: 10px;
+    }
+    span {
+        cursor: pointer;
+    }
+    .switcher-btn {
+        color: var(--tj-color-theme-secondary);
+        background: transparent;
+        font-size: 17px;
+        font-weight: var(--tj-fw-medium);
+        border-radius: 4px;
+        padding: 9px 20px;
+        @media #{$lg, $md, $sm, $xs} {
+            padding: 9px 10px;
+            font-size: 16px;
+        }
+        &.active {
+            color: var(--tj-color-common-white);
+            background: var(--tj-color-theme-primary);
+        }
+    }
+}
+
+/* !END: Theme Price CSS */

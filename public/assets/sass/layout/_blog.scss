@@ -1,0 +1,315 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Blog CSS
+----------------------------------------*/
+.tj-blog-section {
+   padding-top: 120px;
+   padding-bottom: 70px;
+   .tj-sec-heading-four {
+      margin-left: 0;
+   }
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 30px;
+   }
+}
+
+.tj-blog-section-two {
+   padding-top: 120px;
+   padding-bottom: 90px;
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+   }
+   .tj-sec-heading-two {
+      margin-left: 0;
+      .title {
+         margin-bottom: 0;
+         @media #{$lg, $md, $sm, $xs} {
+            margin-bottom: 15px;
+         }
+      }
+   }
+}
+
+.tj-blog-section-three {
+   padding-top: 120px;
+   padding-bottom: 90px;
+   .tj-sec-heading-three {
+      margin-bottom: 60px;
+   }
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+      .tj-sec-heading-three {
+         margin-bottom: 40px;
+      }
+   }
+}
+
+.blog-top-content-area {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 60px;
+   @media #{$lg, $md, $sm, $xs} {
+      margin-bottom: 40px;
+   }
+   .blog-desc {
+      max-width: 435px;
+      p {
+         margin-bottom: 0;
+         line-height: 2.1;
+         @media #{$sm, $xs} {
+            line-height: 1.9;
+            font-size: 16px;
+         }
+      }
+   }
+}
+
+.blog-content-area {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: end;
+   justify-content: space-between;
+   margin-bottom: 60px;
+   @media #{$md, $sm, $xs} {
+      margin-bottom: 40px;
+   }
+   .tj-sec-heading {
+      margin-left: 0;
+      @media #{$lg, $md, $sm, $xs} {
+         margin-bottom: 30px;
+      }
+      .sec-title {
+         margin-bottom: 0;
+      }
+   }
+   .blog-desc {
+      max-width: 485px;
+      p {
+         margin-bottom: 0;
+         font-size: 18px;
+         line-height: 2.1;
+         @media #{$sm, $xs} {
+            line-height: 1.9;
+            font-size: 16px;
+         }
+      }
+   }
+}
+
+.tj-blog-item {
+   margin-bottom: 50px;
+   .blog-image {
+      margin-bottom: 20px;
+      a {
+         display: inline-block;
+         width: 100%;
+         img {
+            width: 100%;
+         }
+      }
+   }
+   .blog-text-area {
+      padding-left: 20px;
+      .blog-content {
+         max-width: 312px;
+         .title {
+            line-height: 1.6;
+            a {
+               transform-origin: 0.4s;
+               &:hover {
+                  color: var(--tj-color-theme-primary);
+               }
+            }
+         }
+         .tj-blog-button {
+            margin-top: 30px;
+            @media #{$sm, $xs} {
+               margin-top: 20px;
+            }
+         }
+      }
+   }
+}
+
+.tj-blog-item-two {
+   margin-bottom: 30px;
+   position: relative;
+   z-index: 1;
+   transition: 0.4s;
+   overflow: hidden;
+   .blog-image {
+      a {
+         display: inline-block;
+         width: 100%;
+         img {
+            width: 100%;
+         }
+      }
+   }
+   .blog-content {
+      background: var(--tj-color-common-white);
+      padding: 20px;
+      margin-top: -20px;
+      max-width: 85%;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      margin-top: -36px;
+      margin-left: auto;
+      margin-right: auto;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      @media #{$xs, $sm} {
+         max-width: 90%;
+      }
+      .title {
+         line-height: 1.6;
+         a {
+            transition: 0.4s;
+            &:hover {
+               color: var(--tj-color-theme-primary);
+            }
+         }
+      }
+      .tj-blog-button {
+         margin-top: 30px;
+         @media #{$sm, $xs} {
+            margin-top: 20px;
+         }
+      }
+   }
+   &:hover {
+      .blog-content {
+         background-color: var(--tj-color-light-2);
+      }
+   }
+}
+
+.tj-blog-item-three {
+   margin-bottom: 30px;
+   position: relative;
+   z-index: 1;
+   transition: 0.3s;
+   overflow: hidden;
+   .blog-image {
+      a {
+         display: inline-block;
+         width: 100%;
+         img {
+            width: 100%;
+            border-radius: 10px;
+         }
+      }
+   }
+   .blog-content {
+      background: var(--tj-color-common-white);
+      padding: 10px;
+      max-width: 90%;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      margin-top: -36px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: 0.3s;
+      border-radius: 10px;
+      text-align: center;
+      @media #{$xs, $sm, $md, $lg, $xl} {
+         max-width: 100%;
+      }
+      .blog-meta {
+         ul {
+            justify-content: center;
+            @media #{$xs, $sm, $md, $lg, $xl} {
+               gap: 10px;
+            }
+         }
+      }
+      .title {
+         line-height: 1.6;
+         margin-bottom: 20px;
+         a {
+            transition: 0.4s;
+            &:hover {
+               color: var(--tj-color-theme-primary);
+            }
+         }
+      }
+      .read-more-button {
+         .read-more {
+            justify-content: center;
+         }
+      }
+   }
+   &:hover {
+      .blog-content {
+         background-color: var(--tj-color-theme-bg);
+      }
+   }
+}
+
+.blog-meta {
+   margin-bottom: 15px;
+   @media #{$sm, $xs} {
+      margin-bottom: 10px;
+   }
+   ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      @media #{$lg, $md, $sm, $xs} {
+         gap: 10px;
+      }
+      li {
+         i {
+            font-size: 17px;
+            margin-right: 5px;
+            position: relative;
+            top: 3px;
+         }
+      }
+   }
+}
+
+.blog-meta-two {
+   margin-bottom: 30px;
+   padding-bottom: 15px;
+   border-bottom: 1px solid var(--tj-color-border-2);
+   ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      @media #{$lg, $md, $sm, $xs} {
+         gap: 10px;
+      }
+      li {
+         a {
+            transition: 0.4s;
+            &:hover {
+               color: var(--tj-color-theme-primary);
+            }
+         }
+         i {
+            font-size: 17px;
+            margin-right: 10px;
+            position: relative;
+            top: 2px;
+         }
+      }
+   }
+}
+/* !END: Theme Blog CSS */

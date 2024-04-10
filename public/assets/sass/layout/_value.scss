@@ -1,0 +1,106 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Value CSS
+----------------------------------------*/
+.tj-value-section {
+    padding-top: 120px;
+    padding-bottom: 90px;
+    position: relative;
+    z-index: 1;
+    @media #{$md, $sm, $xs} {
+        padding-top: 80px;
+        padding-bottom: 50px;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 653px;
+        top: 0;
+        left: 0;
+        background: linear-gradient(306deg, rgba(3, 9, 13, 0.85) 29.81%, rgba(50, 60, 69, 0.72) 94.38%);
+        z-index: 2;
+        @media #{$md, $sm, $xs} {
+            height: 100%;
+        }
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 653px;
+        top: 0;
+        left: 0;
+        background-image: url(../images/banner/value-bg.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @media #{$md, $sm, $xs} {
+            height: 100%;
+        }
+    }
+    .tj-sec-heading-two {
+        margin-bottom: 60px;
+        position: relative;
+        z-index: 3;
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 40px;
+        }
+        .sub-title {
+            color: var(--tj-color-common-white);
+        }
+        .title {
+            color: var(--tj-color-common-white);
+        }
+    }
+}
+
+.tj-value-item {
+    margin-bottom: 30px;
+    background: var(--tj-color-common-white);
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+    transition: 0.4s;
+    @media #{$lg, $md, $sm, $xs} {
+        padding: 30px;
+    }
+    .value-top-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        @media #{$md, $sm, $xs} {
+            margin-bottom: 15px;
+        }
+        .value-icon {
+            font-size: 50px;
+            color: var(--tj-color-heading-primary);
+            line-height: 1;
+        }
+        .value-number {
+            .number {
+                font-size: 50px;
+                font-family: var(--tj-ff-heading);
+                font-weight: var(--tj-fw-bold);
+                color: rgba(113, 113, 113, 0.2);
+            }
+        }
+    }
+    .title {
+        margin-bottom: 20px;
+    }
+    .desc {
+        p {
+            margin-bottom: 0;
+            line-height: 1.8;
+        }
+    }
+    &:hover {
+        background: var(--tj-color-light-2);
+        box-shadow: 15px 15px 30px 0px rgba(0, 0, 0, 0.05);
+    }
+}
+/* !END: Theme Value CSS */

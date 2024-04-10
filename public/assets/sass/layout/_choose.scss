@@ -1,0 +1,194 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Choose CSS
+----------------------------------------*/
+.tj-choose-us-section {
+   padding-top: 120px;
+   padding-bottom: 90px;
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+   }
+   .tj-sec-heading-two {
+      max-width: 760px;
+      margin-left: 0;
+      margin-bottom: 60px;
+      @media #{$md, $sm, $xs} {
+         margin-bottom: 40px;
+      }
+      .desc {
+         p {
+            font-size: 18px;
+            margin-bottom: 0;
+            line-height: 2.1;
+            @media #{$sm, $xs} {
+               font-size: 16px;
+               line-height: 1.9;
+            }
+         }
+      }
+   }
+   &.choose-us-2 {
+      .tj-sec-heading-three {
+         max-width: 892px;
+         width: 100%;
+         margin-bottom: 60px;
+         .title {
+            margin-bottom: 30px;
+         }
+         p {
+            font-size: 18px;
+            line-height: 1.9;
+            &:last-child {
+               margin-bottom: 0;
+            }
+         }
+      }
+      @media #{$md, $sm, $xs} {
+         .tj-sec-heading-three {
+            margin-bottom: 40px;
+            .title {
+               margin-bottom: 15px;
+            }
+         }
+      }
+   }
+}
+
+.tj-choose-us-item {
+   margin-bottom: 30px;
+   padding: 20px 30px 25px;
+   transition: 0.4s;
+   @media #{$xl, $lg, $md, $sm, $xs} {
+      padding: 20px;
+   }
+   .choose-us-top-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      .choose-us-icon {
+         font-size: 60px;
+         color: var(--tj-color-heading-primary);
+      }
+      .choose-us-text {
+         span {
+            font-size: 50px;
+            font-family: var(--tj-ff-heading);
+            font-weight: var(--tj-fw-bold);
+            color: rgba(113, 113, 113, 0.2);
+         }
+      }
+   }
+   .title {
+      margin-bottom: 10px;
+      line-height: 1.6;
+   }
+   .desc {
+      margin-bottom: 8px;
+      p {
+         margin-bottom: 0;
+      }
+   }
+   .read-more {
+      a {
+         color: var(--tj-color-theme-secondary);
+         font-size: 17px;
+         font-weight: var(--tj-fw-medium);
+         i {
+            font-size: 18px;
+            font-weight: var(--tj-fw-bold);
+            position: relative;
+            top: 5px;
+            margin-left: 10px;
+            color: var(--tj-color-theme-secondary);
+         }
+      }
+   }
+   &:hover {
+      background: var(--tj-color-light-3);
+      box-shadow: 15px 15px 30px 0px rgba(50, 60, 69, 0.05);
+      .choose-us-icon {
+         color: var(--tj-color-theme-primary);
+      }
+      .title {
+         color: var(--tj-color-theme-primary);
+      }
+      .read-more {
+         a {
+            color: var(--tj-color-theme-primary);
+            i {
+               color: var(--tj-color-theme-primary);
+            }
+         }
+      }
+   }
+}
+
+.tj-choose-us-item-two {
+   margin-bottom: 30px;
+   padding: 20px 30px 25px;
+   border: 1px solid var(--tj-color-border-4);
+   border-radius: 15px;
+   transition: 0.4s;
+   @media #{$xl, $lg, $md, $sm, $xs} {
+      padding: 20px;
+   }
+   .choose-us-top-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      .choose-us-icon {
+         font-size: 60px;
+         color: var(--tj-color-heading-primary);
+         line-height: 1;
+      }
+      .choose-us-text {
+         span {
+            font-size: 50px;
+            font-family: var(--tj-ff-heading);
+            font-weight: var(--tj-fw-bold);
+            color: rgba(113, 113, 113, 0.2);
+         }
+      }
+   }
+   .title {
+      margin-bottom: 10px;
+      line-height: 1.6;
+   }
+   .desc {
+      margin-bottom: 10px;
+      p {
+         margin-bottom: 0;
+      }
+   }
+   .read-more {
+      a {
+         color: var(--tj-color-theme-secondary);
+         font-size: 17px;
+         font-weight: var(--tj-fw-medium);
+         i {
+            font-size: 18px;
+            font-weight: var(--tj-fw-bold);
+            position: relative;
+            top: 5px;
+            margin-left: 10px;
+            color: var(--tj-color-theme-secondary);
+         }
+         &:hover {
+            color: var(--tj-color-theme-primary);
+            i {
+               color: var(--tj-color-theme-primary);
+            }
+         }
+      }
+   }
+   &:hover {
+      border-color: var(--tj-color-theme-primary);
+   }
+}
+/* !END: Theme Choose CSS */

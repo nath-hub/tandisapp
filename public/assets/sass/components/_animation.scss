@@ -1,0 +1,14 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Animation CSS
+----------------------------------------*/
+// circle animation
+@keyframes rotateImg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,323 @@
+@font-face {
+    font-family: "flaticon_solar_plus";
+    src: url("../fonts/flaticon_solar_plus.ttf?960b0acfb79667dd4550ee39dd18f9fc") format("truetype"),
+        url("../fonts/flaticon_solar_plus.woff?960b0acfb79667dd4550ee39dd18f9fc") format("woff"),
+        url("../fonts/flaticon_solar_plus.woff2?960b0acfb79667dd4550ee39dd18f9fc") format("woff2"),
+        url("../fonts/flaticon_solar_plus.eot?960b0acfb79667dd4550ee39dd18f9fc#iefix") format("embedded-opentype"),
+        url("../fonts/flaticon_solar_plus.svg?960b0acfb79667dd4550ee39dd18f9fc#flaticon_solar_plus") format("svg");
+}
+i[class^="flaticon-"]:before,
+i[class*=" flaticon-"]:before {
+    font-family: flaticon_solar_plus !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-menu:before {
+    content: "\f101";
+}
+
+.flaticon-search:before {
+    content: "\f102";
+}
+
+.flaticon-shopping-cart:before {
+    content: "\f103";
+}
+
+.flaticon-shopping-bag:before {
+    content: "\f104";
+}
+
+.flaticon-shopping-cart-1:before {
+    content: "\f105";
+}
+
+.flaticon-facebook:before {
+    content: "\f106";
+}
+
+.flaticon-youtube:before {
+    content: "\f107";
+}
+
+.flaticon-linkedin:before {
+    content: "\f108";
+}
+
+.flaticon-pinterest:before {
+    content: "\f109";
+}
+
+.flaticon-email:before {
+    content: "\f10a";
+}
+
+.flaticon-calling:before {
+    content: "\f10b";
+}
+
+.flaticon-menu-1:before {
+    content: "\f10c";
+}
+
+.flaticon-right-arrow:before {
+    content: "\f10d";
+}
+
+.flaticon-quality:before {
+    content: "\f10e";
+}
+
+.flaticon-experience:before {
+    content: "\f10f";
+}
+
+.flaticon-completed-task:before {
+    content: "\f110";
+}
+
+.flaticon-customer-service:before {
+    content: "\f111";
+}
+
+.flaticon-timeline:before {
+    content: "\f112";
+}
+
+.flaticon-solar-panel:before {
+    content: "\f113";
+}
+
+.flaticon-environmental:before {
+    content: "\f114";
+}
+
+.flaticon-save-energy:before {
+    content: "\f115";
+}
+
+.flaticon-wind-energy:before {
+    content: "\f116";
+}
+
+.flaticon-reliability:before {
+    content: "\f117";
+}
+
+.flaticon-customize:before {
+    content: "\f118";
+}
+
+.flaticon-green-power:before {
+    content: "\f119";
+}
+
+.flaticon-italy:before {
+    content: "\f11a";
+}
+
+.flaticon-budget:before {
+    content: "\f11b";
+}
+
+.flaticon-continuous-improvement:before {
+    content: "\f11c";
+}
+
+.flaticon-product-lauch:before {
+    content: "\f11d";
+}
+
+.flaticon-arrow-right:before {
+    content: "\f11e";
+}
+
+.flaticon-targeting:before {
+    content: "\f11f";
+}
+
+.flaticon-leadership:before {
+    content: "\f120";
+}
+
+.flaticon-mission:before {
+    content: "\f121";
+}
+
+.flaticon-youtube-1:before {
+    content: "\f122";
+}
+
+.flaticon-open:before {
+    content: "\f123";
+}
+
+.flaticon-location:before {
+    content: "\f124";
+}
+
+.flaticon-phone:before {
+    content: "\f125";
+}
+
+.flaticon-telegram:before {
+    content: "\f126";
+}
+
+.flaticon-placeholder:before {
+    content: "\f127";
+}
+
+.flaticon-solar-energy:before {
+    content: "\f128";
+}
+
+.flaticon-battery:before {
+    content: "\f129";
+}
+
+.flaticon-solar-panel-1:before {
+    content: "\f12a";
+}
+
+.flaticon-solar-cell:before {
+    content: "\f12b";
+}
+
+.flaticon-share:before {
+    content: "\f12c";
+}
+
+.flaticon-whatsapp:before {
+    content: "\f12d";
+}
+
+.flaticon-linkedin-1:before {
+    content: "\f12e";
+}
+
+.flaticon-facebook-1:before {
+    content: "\f12f";
+}
+
+.flaticon-plus-positive-add-mathematical-symbol:before {
+    content: "\f130";
+}
+
+.flaticon-experience-1:before {
+    content: "\f131";
+}
+
+.flaticon-hydropower:before {
+    content: "\f132";
+}
+
+.flaticon-green-energy:before {
+    content: "\f133";
+}
+
+.flaticon-eco-light:before {
+    content: "\f134";
+}
+
+.flaticon-calendar:before {
+    content: "\f135";
+}
+
+.flaticon-chat:before {
+    content: "\f136";
+}
+
+.flaticon-sent:before {
+    content: "\f137";
+}
+
+.flaticon-solar-energy-1:before {
+    content: "\f138";
+}
+
+.flaticon-back-in-time:before {
+    content: "\f139";
+}
+
+.flaticon-downloads:before {
+    content: "\f13a";
+}
+
+.flaticon-download:before {
+    content: "\f13b";
+}
+
+.flaticon-spray:before {
+    content: "\f13c";
+}
+
+.flaticon-solar-energy-2:before {
+    content: "\f13d";
+}
+
+.flaticon-renewable-energy:before {
+    content: "\f13e";
+}
+
+.flaticon-solar-energy-3:before {
+    content: "\f13f";
+}
+
+.flaticon-reply:before {
+    content: "\f140";
+}
+
+.flaticon-down-arrow:before {
+    content: "\f141";
+}
+
+.flaticon-user:before {
+    content: "\f142";
+}
+
+.flaticon-envelope:before {
+    content: "\f143";
+}
+
+.flaticon-technician:before {
+    content: "\f144";
+}
+
+.flaticon-person:before {
+    content: "\f145";
+}
+
+.flaticon-energy:before {
+    content: "\f146";
+}
+
+.flaticon-wind-turbine:before {
+    content: "\f147";
+}
+
+.flaticon-jumping-man:before {
+    content: "\f148";
+}
+
+.flaticon-group:before {
+    content: "\f149";
+}
+
+.flaticon-email-1:before {
+    content: "\f14a";
+}
+
+.flaticon-viber:before {
+    content: "\f14b";
+}
+
+.flaticon-smog-factory-building-contamination:before {
+    content: "\f14c";
+} /*# sourceMappingURL=flaticon_solar_plus.css.map */

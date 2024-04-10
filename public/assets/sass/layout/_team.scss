@@ -1,0 +1,336 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Team CSS
+----------------------------------------*/
+.tj-team-section {
+   background: var(--tj-color-theme-bg);
+   padding-top: 120px;
+   padding-bottom: 90px;
+   &.style-2 {
+      background: var(--tj-color-common-white);
+   }
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+   }
+}
+
+.tj-team-section-two {
+   padding-top: 120px;
+   padding-bottom: 90px;
+   background: var(--tj-color-common-white);
+   position: relative;
+   z-index: 2;
+   .sec-left-shape {
+      position: absolute;
+      top: 12%;
+      left: 0;
+      max-width: 195px;
+      width: 100%;
+      z-index: -1;
+   }
+   .sec-right-shape {
+      position: absolute;
+      bottom: 18%;
+      right: 0;
+      z-index: -1;
+   }
+   .team-content-area {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      .tj-sec-heading-three {
+         max-width: 688px;
+         width: 100%;
+         margin-left: 0;
+      }
+      .service-button {
+         .tj-primary-btn {
+            font-size: 15px;
+            padding: 13px 25px;
+            border-radius: 5px;
+         }
+      }
+   }
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+      .sec-right-shape,
+      .sec-left-shape {
+         display: none;
+      }
+   }
+}
+
+.tj-team-page {
+   padding-top: 120px;
+   padding-bottom: 90px;
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+   }
+}
+
+.team-content-area {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 60px;
+   @media #{$md, $sm, $xs} {
+      margin-bottom: 40px;
+   }
+   .tj-sec-heading {
+      margin-left: 0;
+      @media #{$lg, $md, $sm, $xs} {
+         margin-bottom: 30px;
+      }
+      .sec-title {
+         margin-bottom: 0;
+      }
+   }
+   .right-content {
+      max-width: 530px;
+      @media #{$xl} {
+         max-width: 390px;
+      }
+      p {
+         margin-bottom: 0;
+         font-size: 18px;
+         line-height: 2.1;
+         @media #{$sm, $xs} {
+            line-height: 1.9;
+            font-size: 16px;
+         }
+      }
+   }
+}
+
+.tj-team-item {
+   position: relative;
+   z-index: 1;
+   margin-bottom: 30px;
+   .team-image {
+      margin-bottom: 20px;
+      img {
+         width: 100%;
+      }
+   }
+   .team-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      @media #{$lg, $md, $sm, $xs} {
+         padding: 0;
+      }
+      .team-auother {
+         .title {
+            margin-bottom: 5px;
+         }
+         .sub-title {
+            font-size: 14px;
+         }
+      }
+   }
+   .team-share {
+      .team-social {
+         position: absolute;
+         right: 20px;
+         bottom: 10px;
+         display: inline-block;
+         margin: 0;
+         z-index: 2;
+         li {
+            position: relative;
+            list-style-type: none;
+            display: inline-block;
+            i {
+               display: inline-flex;
+               align-items: center;
+               justify-content: center;
+               width: 40px;
+               height: 40px;
+               background: var(--tj-color-theme-secondary);
+               color: var(--tj-color-common-white);
+               font-size: 18px;
+               position: relative;
+               overflow: hidden;
+            }
+            .team-social-icon {
+               position: absolute;
+               right: 0;
+               bottom: 0;
+               opacity: 0;
+               visibility: hidden;
+               transition: all ease 0.8s;
+               z-index: 4;
+               li {
+                  a {
+                     display: inline-flex;
+                     align-items: center;
+                     justify-content: center;
+                     width: 40px;
+                     height: 40px;
+                     font-size: 18px;
+                     background: var(--tj-color-theme-primary);
+                     color: var(--tj-color-common-white);
+                     transition: all ease 0.4s;
+                     i {
+                        width: 20px;
+                        height: 20px;
+                        line-height: 20px;
+                        display: inline-block;
+                        text-align: center;
+                        border-radius: 50%;
+                        color: var(--tj-color-theme-primary);
+                        background: var(--tj-color-common-white);
+                        font-size: 10px;
+                     }
+                  }
+               }
+            }
+            &:hover {
+               .team-social-icon {
+                  opacity: 1;
+                  visibility: visible;
+                  bottom: 0;
+                  z-index: 5;
+                  transform: scaleY(1);
+               }
+            }
+         }
+      }
+   }
+}
+
+.tj-team-item-two {
+   position: relative;
+   z-index: 1;
+   margin-bottom: 30px;
+   .team-image {
+      margin-bottom: 20px;
+      img {
+         width: 100%;
+         border-radius: 13px;
+      }
+   }
+   .team-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      @media #{$lg, $md, $sm, $xs} {
+         padding: 0;
+      }
+      .team-auother {
+         .title {
+            margin-bottom: 5px;
+         }
+         .sub-title {
+            font-size: 18px;
+         }
+      }
+   }
+   .team-share {
+      .team-social {
+         position: absolute;
+         right: 20px;
+         bottom: 10px;
+         display: inline-block;
+         margin: 0;
+         z-index: 2;
+         li {
+            position: relative;
+            list-style-type: none;
+            display: inline-block;
+            i {
+               display: inline-flex;
+               align-items: center;
+               justify-content: center;
+               width: 45px;
+               height: 45px;
+               background: var(--tj-color-theme-secondary);
+               color: var(--tj-color-common-white);
+               font-size: 18px;
+               position: relative;
+               overflow: hidden;
+            }
+            .team-social-icon {
+               position: absolute;
+               right: 0;
+               bottom: 0;
+               opacity: 0;
+               visibility: hidden;
+               transition: all ease 0.8s;
+               z-index: 2;
+               li {
+                  a {
+                     display: inline-flex;
+                     align-items: center;
+                     justify-content: center;
+                     width: 45px;
+                     height: 45px;
+                     font-size: 18px;
+                     background: var(--tj-color-theme-primary);
+                     color: var(--tj-color-common-white);
+                     transition: all ease 0.4s;
+                     i {
+                        width: 25px;
+                        height: 25px;
+                        line-height: 25px;
+                        display: inline-block;
+                        text-align: center;
+                        border-radius: 50%;
+                        color: var(--tj-color-theme-primary);
+                        background: var(--tj-color-common-white);
+                        font-size: 10px;
+                     }
+                  }
+               }
+            }
+            &:hover {
+               .team-social-icon {
+                  opacity: 1;
+                  visibility: visible;
+                  bottom: 0;
+                  z-index: 5;
+                  transform: scaleY(1);
+               }
+            }
+         }
+      }
+   }
+   @media #{$lg, $md, $sm, $xs} {
+      .team-content {
+         .team-auother {
+            .title {
+               font-size: 25px;
+            }
+         }
+      }
+      .team-share {
+         .team-social {
+            li {
+               i {
+                  width: 45px;
+                  height: 45px;
+               }
+               .team-social-icon {
+                  li {
+                     a {
+                        width: 45px;
+                        height: 45px;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+/* !END: Theme Team CSS */

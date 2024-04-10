@@ -1,0 +1,191 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Form CSS
+----------------------------------------*/
+.form-box-one {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    .input-form {
+        max-width: 312px;
+        width: 100%;
+        @media #{$sm, $xs} {
+            max-width: 100%;
+        }
+        input[type="email"],
+        input[type="text"] {
+            border: 1px solid var(--tj-color-border-2);
+            padding: 13px 20px;
+            &::-ms-input-placeholder {
+                color: var(--tj-color-grey-1);
+            }
+            &::placeholder {
+                color: var(--tj-color-grey-1);
+            }
+        }
+    }
+    .subscribe-button {
+        .tj-primary-btn {
+            padding: 13px 20px 13px 30px;
+        }
+    }
+}
+
+.form-box-two {
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    max-width: 425px;
+    width: 100%;
+    margin-left: auto;
+    .contact-content {
+        margin-bottom: 30px;
+        .title {
+            color: var(--tj-color-common-white);
+            font-size: 35px;
+            margin-bottom: 4px;
+        }
+        span {
+            color: var(--tj-color-theme-primary);
+            font-weight: var(--tj-fw-light);
+        }
+        p {
+            color: var(--tj-color-common-white);
+            margin-bottom: 0;
+        }
+    }
+    .input-form {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 20px;
+        textarea,
+        input[type="tel"],
+        input[type="email"],
+        input[type="text"] {
+            border: 1px solid var(--tj-color-border-2);
+            padding: 11px 20px 11px 55px;
+            width: 100%;
+            background: transparent;
+            color: var(--tj-color-common-white);
+            border-radius: 5px;
+            &::-ms-input-placeholder {
+                color: var(--tj-color-grey-3);
+            }
+            &::placeholder {
+                color: var(--tj-color-grey-3);
+            }
+        }
+        textarea {
+            min-height: 90px;
+        }
+        span {
+            font-size: 20px;
+            color: var(--tj-color-grey-3);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 22px;
+            line-height: 1;
+        }
+        &.input-textarea {
+            span {
+                left: 22px; 
+                top: 25px;
+            } 
+        }
+    }
+    .input-form {
+        @media #{$sm, $xs} {
+            max-width: 100%;
+        }
+    }
+    .submit-button {
+        .tj-primary-btn {
+            width: 100%;
+            border-radius: 5px;
+            padding: 13px 20px;
+            font-size: 16px;
+        }
+    }
+}
+
+.form-box-three {
+    border-radius: 20px;
+    background: var(--tj-color-grey-2);
+    padding: 40px;
+    max-width: 535px;
+    width: 100%;
+    .contact-content {
+        margin-bottom: 20px;
+        .title {
+            color: var(--tj-color-theme-primary);
+            margin-bottom: 10px;
+            span {
+                color: var(--tj-color-theme-secondary);
+                font-weight: var(--tj-fw-light);
+            }
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+    .input-form {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 10px;
+        textarea,
+        input[type="tel"],
+        input[type="email"],
+        input[type="text"] {
+            border: 1.5px solid var(--tj-color-grey-3);
+            padding: 13px 20px 13px 50px;
+            width: 100%;
+            background: transparent;
+            color: var(--tj-color-theme-secondary);
+            border-radius: 10px;
+            &::-ms-input-placeholder {
+                color: var(--tj-color-grey-1);
+            }
+            &::placeholder {
+                color: var(--tj-color-grey-1);
+            }
+        }
+        textarea {
+            padding: 15px 15px;
+            resize: none;
+            min-height: 126px;
+        }
+        span {
+            font-size: 20px;
+            position: absolute;
+            top: 53%;
+            transform: translateY(-50%);
+            left: 15px;
+            line-height: 1;
+            color: var(--tj-color-theme-primary);
+        }
+    }
+    label {
+        color: var(--tj-color-theme-secondary);
+        font-family: var(--tj-ff-heading);
+        font-weight: var(--tj-fw-medium);
+        font-size: 18px;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .submit-button {
+        .tj-primary-btn {
+            border-radius: 8px;
+            padding: 15px 30px;
+        }
+    }
+    @media #{$lg, $md, $sm, $xs} {
+        padding: 25px 15px;
+    }
+}
+/* !END: Theme Form CSS */

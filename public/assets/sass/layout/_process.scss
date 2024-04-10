@@ -1,0 +1,275 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Process CSS
+----------------------------------------*/
+.tj-process-section {
+   padding-bottom: 90px;
+   @media #{$md, $sm, $xs} {
+      padding-bottom: 50px;
+   }
+   &.tj-process-page {
+      padding-top: 120px;
+      @media #{$md, $sm, $xs} {
+         padding-top: 80px;
+      }
+   }
+   .tj-sec-heading {
+      margin-bottom: 60px;
+      @media #{$md, $sm, $xs} {
+         margin-bottom: 40px;
+      }
+   }
+}
+
+.tj-process-section-two {
+   padding-top: 120px;
+   padding-bottom: 90px;
+   position: relative;
+   z-index: 2;
+   &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 50%;
+      top: 0;
+      left: 0;
+      background: var(--tj-color-theme-secondary);
+      z-index: -1;
+   }
+   .tj-sec-heading-three {
+      max-width: 710px;
+      margin-bottom: 60px;
+      .sub-title {
+         color: var(--tj-color-common-white);
+      }
+      .title {
+         color: var(--tj-color-theme-primary);
+         span {
+            color: var(--tj-color-common-white);
+            font-weight: var(--tj-fw-elight);
+         }
+      }
+   }
+   .process-left-sec-shape {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 890px;
+      width: 100%;
+      z-index: -1;
+   }
+   .process-right-sec-shape {
+      position: absolute;
+      top: 0;
+      right: 0;
+      max-width: 650px;
+      width: 100%;
+      z-index: -1;
+   }
+   .process-right-sec-shape1 {
+      position: absolute;
+      top: 28%;
+      left: 0;
+      max-width: 190px;
+      width: 100%;
+      z-index: -1;
+   }
+   .process-left-sec-shape1 {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      max-width: 110px;
+      width: 100%;
+      z-index: -1;
+   }
+   .process-shape-two {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      left: 6%;
+      max-width: 135px;
+      width: 100%;
+   }
+   .process-shape-three {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      right: 60px;
+      max-width: 135px;
+      width: 100%;
+   }
+   @media #{$md, $sm, $xs} {
+      padding-top: 80px;
+      padding-bottom: 50px;
+      .tj-sec-heading-three {
+         margin-bottom: 30px;
+      }
+      .process-images {
+         img {
+            width: 100%;
+         }
+      }
+      .process-right-sec-shape1,
+      .process-shape-three,
+      .process-shape-two,
+      .process-left-sec-shape1,
+      .process-right-sec-shape,
+      .process-left-sec-shape {
+         display: none;
+      }
+   }
+}
+
+.tj-process-item {
+   position: relative;
+   z-index: 1;
+   transition: 0.5s;
+   margin-bottom: 30px;
+   &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: linear-gradient(0deg, rgba(50, 60, 69, 0.8) 0%, rgba(50, 60, 69, 0) 100%);
+   }
+   img {
+      width: 100%;
+   }
+   .process-content {
+      position: absolute;
+      left: 0;
+      bottom: 30px;
+      width: 100%;
+      z-index: 3;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      align-items: center;
+      transition: 0.5s;
+      background: transparent;
+      padding-left: 30px;
+
+      @media #{$lg, $md, $sm, $xs} {
+         gap: 14px;
+      }
+      .process-icon {
+         width: 67px;
+         height: 90px;
+         line-height: 90px;
+         display: inline-block;
+         text-align: center;
+         color: var(--tj-color-common-white);
+         background: var(--tj-color-theme-primary);
+         font-size: 37px;
+         position: relative;
+         bottom: 0;
+         transition: 0.5s;
+
+         @media #{$lg, $md, $sm, $xs} {
+            width: 60px;
+            height: 80px;
+            line-height: 80px;
+            font-size: 35px;
+         }
+      }
+      .process-title {
+         .title {
+            color: var(--tj-color-common-white);
+            margin-bottom: 0;
+         }
+      }
+   }
+   &:hover {
+      .process-content {
+         padding-left: 15px;
+         background-color: var(--tj-color-common-white);
+         bottom: 0;
+         .process-icon {
+            bottom: 30px;
+         }
+         .process-title {
+            .title {
+               color: var(--tj-color-common-black);
+            }
+         }
+      }
+   }
+}
+
+.tj-process-item-two {
+   margin-bottom: 30px;
+   position: relative;
+   z-index: 2;
+   @include transition(all 0.3s ease-in-out 0s);
+   overflow: hidden;
+   border-radius: 15px;
+   &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      bottom: -100px;
+      top: 0;
+      left: 0;
+      background: linear-gradient(0deg, var(--tj-color-theme-primary) 0%, rgba(50, 60, 69, 0) 87.9%);
+      opacity: 0;
+      visibility: hidden;
+   }
+   .process-images {
+      img {
+         border-radius: 15px;
+      }
+   }
+   .process-content {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      .process-icon {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 90px;
+         height: 90px;
+         border-radius: 10px;
+         line-height: 1;
+         font-size: 50px;
+         border: 1px solid var(--tj-color-common-white);
+         background: rgba(57, 202, 110, 0.14);
+         backdrop-filter: blur(10px);
+         color: var(--tj-color-common-white);
+         margin-bottom: 20px;
+         i {
+            position: relative;
+            top: 2px;
+         }
+      }
+      .process-title {
+         .title {
+            color: var(--tj-color-common-white);
+            margin-bottom: 0;
+            span {
+               color: var(--tj-color-common-white);
+               font-weight: var(--tj-fw-light);
+            }
+         }
+      }
+   }
+   &:hover {
+      .process-content {
+         .process-icon {
+            color: var(--tj-color-common-white);
+            background-color: rgba(57, 202, 110, 0.14);
+            backdrop-filter: blur(10px);
+         }
+      }
+      &::before {
+         opacity: 1;
+         visibility: visible;
+         bottom: 0;
+      }
+   }
+}
+/* !END: Theme Process CSS */

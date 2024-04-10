@@ -1,0 +1,207 @@
+@use "../utilities" as *;
+
+/**----------------------------------------
+START: Theme Service CSS
+----------------------------------------*/
+.tj-service-details {
+    padding-top: 120px;
+    padding-bottom: 105px;
+    @media #{$md, $sm, $xs} {
+        padding-top: 80px;
+        padding-bottom: 55px;
+    }
+}
+
+.service-details-item {
+    margin-bottom: 30px;
+    .details-image {
+        margin-bottom: 30px;
+    }
+    .title {
+        margin-bottom: 15px;
+        @media #{$md, $sm, $xs} {
+            font-size: 38px;
+        }
+    }
+    p {
+        margin-bottom: 10px;
+        line-height: 2.1;
+        font-size: 18px;
+        @media #{$sm, $xs} {
+            font-size: 16px;
+            line-height: 1.9;
+        }
+    }
+    .service-wrapper {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        .tj-video-area {
+            @media #{$md, $sm, $xs} {
+                margin-bottom: 30px;
+            }
+        }
+        .video-image {
+            &::before {
+                display: none;
+            }
+            img {
+                @media #{$md, $sm, $xs} {
+                    width: 100%;
+                }
+            }
+        }
+        .service-content {
+            .title {
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
+            p {
+                line-height: 27px;
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+            .check-list {
+                ul {
+                    li {
+                        font-size: 17px;
+                        font-weight: var(--tj-fw-medium);
+                        color: var(--tj-color-theme-primary);
+                        margin-bottom: 19px;
+                        @media #{$xl, $lg, $md, $sm, $xs} {
+                            font-size: 16px;
+                            margin-bottom: 10px;
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                        i {
+                            width: 18px;
+                            height: 18px;
+                            line-height: 18px;
+                            text-align: center;
+                            border-radius: 50%;
+                            font-size: 12px;
+                            display: inline-block;
+                            color: var(--tj-color-common-white);
+                            background: var(--tj-color-theme-primary);
+                            position: relative;
+                            top: -2px;
+                            margin-right: 15px;
+                            @media #{$xl, $lg} {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tj-service-widget {
+    background: var(--tj-color-light-2);
+    margin-bottom: 24px;
+    padding: 40px;
+    position: relative;
+    z-index: 3;
+    @media #{$lg, $md, $sm, $xs} {
+        padding: 20px;
+    }
+    .side-title {
+        font-size: 30px;
+        color: var(--tj-color-theme-primary);
+        position: relative;
+        margin-bottom: 35px;
+        @media #{$sm, $xs} {
+            font-size: 26px;
+        }
+        &::before {
+            position: absolute;
+            content: "";
+            bottom: -10px;
+            left: 0;
+            width: 89.48px;
+            height: 3px;
+            background: var(--tj-color-heading-primary);
+            @media #{$sm, $xs} {
+                width: 50px;
+            }
+        }
+    }
+}
+
+.sidebar-download {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            font-size: 18px;
+            font-weight: var(--tj-fw-medium);
+            margin-bottom: 10px;
+            font-family: var(--tj-ff-heading);
+            &:last-child {
+                margin-bottom: 0;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                span {
+                    color: var(--tj-color-heading-primary);
+                    font-weight: var(--tj-fw-bold);
+                }
+                &:hover {
+                    color: var(--tj-color-theme-primary);
+                    span {
+                        color: var(--tj-color-theme-primary);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sidebar-contact {
+    .contact-text {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 8px;
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 36px;
+            display: inline-block;
+            text-align: center;
+            border: 1px solid var(--tj-color-heading-primary);
+            border-radius: 50%;
+        }
+        .title {
+            margin-bottom: 0;
+        }
+    }
+    a {
+        font-size: 30px;
+        color: var(--tj-color-theme-primary);
+        font-weight: var(--tj-fw-bold);
+        font-family: var(--tj-ff-heading);
+        transition: 0.4s;
+        display: block;
+        margin-bottom: 20px;
+        @media #{$md, $sm, $xs} {
+            font-size: 25px;
+        }
+        &:hover {
+            color: var(--tj-color-heading-primary);
+        }
+    }
+    p {
+        font-size: 15px;
+        line-height: 27px;
+        margin-bottom: 0;
+    }
+}
+
+/* !END: Theme Service CSS */
