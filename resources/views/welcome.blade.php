@@ -9,7 +9,7 @@
 
     @include('layouts.slider')
 
-     <!--=========== About Section Start =========-->
+    <!--=========== About Section Start =========-->
     <section class="tj-about-section">
         <div class="container">
             <div class="row align-items-center">
@@ -38,7 +38,7 @@
                                     <div class="tj-count">
                                         <span class="odometer" data-count="14000">0</span>+
                                     </div>
-                                    <span class="sub-title">Installé dans 2 villes</span>
+                                    <span class="sub-title">Utilisables partout au monde</span>
                                 </div>
                             </div>
                             <div class="counter-item">
@@ -47,12 +47,12 @@
                                 </div>
                                 <div class="counter-number">
                                     <div class="tj-count"><span class="odometer" data-count="100">0</span>%</div>
-                                    <span class="sub-title">Livré partout au Cameroun</span>
+                                    <span class="sub-title">Transaction sécurisées</span>
                                 </div>
                             </div>
                         </div>
                         <div class="tj-about-button d-flex">
-                            <a class="tj-primary-btn btn" href="about-us.html">
+                            <a class="tj-primary-btn btn" href="{{route('home.projet')}}">
                                 Investir <i class="flaticon-right-arrow"></i>
                             </a>
                         </div>
@@ -61,7 +61,7 @@
                 <div class="col-xl-5 col-lg-12">
                     <div class="about-image-group">
                         <div class="about-lg-image">
-                            <img src="assets/images/banner/ban6.jpg" alt="Image" />
+                            <img src="assets/images/b5.jpeg" alt="Image" />
                             <div class="about-circle">
                                 <div class="video-play">
                                     <a class="venobox popup-videos-button" data-autoplay="true" data-vbtype="video"
@@ -98,53 +98,106 @@
 
 
     {{-- ===================== phase ===================== --}}
-    <div class="container">
+    <div class="container d-none d-md-block">
         <div class="row">
             <div class="col-lg-12">
                 <div class="tj-sec-heading text-center">
-                    <span class="sub-title">Nos Phases</span>
+                    <span class="sub-title">Trois étapes</span>
                     <h2 class="sec-title">
-                        Prévision pour l'année <br />
-                        <span>2024</span>
+                        COMMENT CA MARCHE <br />
+                        <span></span>
                     </h2>
                 </div>
             </div>
         </div>
-        <div class="card table-responsive">
-            <table class="table table-striped table-hover">
-                <thead class="table-primary">
-                    <tr>
-                        <th scope="col">Phases</th>
-                        <th scope="col">Début</th>
-                        <th scope="col">Fin</th>
-                        <th scope="col">Montant</th>
-                        <th scope="col tj-color-theme-primary">Statut</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table-active">
-                        <th scope="row">Phase 1</th>
-                        <td>15 janvier 2024</td>
-                        <td>15 février 2024</td>
-                        <td>1000.000</td>
-                        <td>Terminer</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Phase 2</th>
-                        <td>15 février 2024</td>
-                        <td>15 mars 2024</td>
-                        <td>1000.000</td>
-                        <td>En-cour</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Phase 3</th>
-                        <td>15 mars 2024</td>
-                        <td>15 avril 2024</td>
-                        <td>1000.000</td>
-                        <td>---</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="shadow-lg mb-5 bg-body rounded row align-items-center">
+            <div class="card col-4 py-3 m-5" style="width: 18rem;">
+                <a class="" href="{{ route('register') }}">
+                    <img src="{{ asset('assets/images/i4.png') }}" style="width : 7vw; height : 15vh;"
+                        class="card-img-top rounded  float-center" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">CRÉER VOTRE COMPTE</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <p class="card-text">Entrez vos informations afin de beneficier des services de TANDIS INVEST
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card col-4 py-3 m-5" style="width: 18rem;">
+                <a href="{{ route('login') }}">
+                    <img src="{{ asset('assets/images/i2.png') }}" style="width : 7vw; height : 15vh;"
+                        class="card-img-top rounded mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">CONNECTEZ-VOUS</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <p class="card-text">Après votre enregistrement connectez-vous sur votre tableau de bord </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card col-4 py-3 m-5" style="width: 250px;">
+                <a href="{{ route('home.projet') }}">
+                    <img src="{{ asset('assets/images/i5.jpg') }}" style="width : 10vw; height : 17vh;"
+                        class="card-img-top rounded mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">INVESTISSEZ</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <p class="card-text">Achetez des actions dans les entreprises</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container d-block d-sm-none">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tj-sec-heading text-center">
+                    <span class="sub-title">Trois étapes</span>
+                    <h2 class="sec-title">
+                        COMMENT CA MARCHE <br />
+                        <span></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="shadow-lg mb-5 rounded row align-items-center">
+            <div class="card col-4 py-3 m-5" style="width: 300px;">
+                <a class="" href="{{ route('register') }}">
+                    <img src="{{ asset('assets/images/i4.png') }}" style="width : 30vw; height : 17vh;"
+                        class="card-img-top rounded  float-center" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">CRÉER VOTRE COMPTE</h5>
+                        <p class="card-text">Entrez vos informations afin de beneficier des services de TANDIS INVEST
+                        </p>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="card col-4 py-3 m-5" style="width: 300px;">
+                <a href="{{ route('login') }}">
+                    <img src="{{ asset('assets/images/i2.png') }}" style="width : 30vw; height : 17vh;"
+                        class="card-img-top rounded mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">CONNECTEZ-VOUS</h5>
+                        <p class="card-text">Après votre enregistrement connectez-vous sur votre tableau de bord </p>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="card col-4 py-3 m-5" style="width: 300px;">
+                <a href="{{ route('home.projet') }}">
+                    <img src="{{ asset('assets/images/i5.jpg') }}" style="width : 30vw; height : 17vh;"
+                        class="card-img-top rounded mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">INVESTISSEZ</h5>
+                        <p class="card-text">Achetez des actions dans les entreprises</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -175,25 +228,29 @@
                     <div class="col">
 
                         <div class="card h-100 text-center">
-                            <img src="{{ asset('assets/images/banner/ban1.jpg') }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('storage/'.$enterprise->image) }}" class="d-block mx-auto w-50"
+                                alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $enterprise->name_enterprise }}</h5>
                                 <p class="sec-title">Objectif : {{ $enterprise->objectif }}</p>
-                                <p class="card-text text-success">Montant actuel: {{ $enterprise->montant_actuel }}</p>
+                                <p class="card-text text-success">Montant actuel: {{ $enterprise->montant_actuel }}
+                                </p>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{$enterprise->progress}};">{{$enterprise->bar}}%</div>
+                                  </div>
+                                <div class="card-footer">
+                                    <div class="clearfix">
+                                        <a href="{{ route('invest.create', ['enterprise' => $enterprise->id]) }}"
+                                            class="btn btn-success btn-lg float-start btn-block">Investir</a>
+                                        <a href="{{ route('enterprise.show', ['enterprise' => $enterprise->id]) }}"
+                                            class="btn btn-warning btn-lg btn-block float-end">Details</a>
+                                    </div>
                                 </div>
-                                <div class="card-footer d-flex  text-right justify-content-center">
-                                    <a href="{{ route('invest.create', ['enterprise' => $enterprise->id]) }}"
-                                        class="btn btn-success btn-lg btn-block">
-                                        Investir </a>
-                                    <a href="{{route('enterprise.show', ['enterprise' => $enterprise->id])}}" class="btn btn-warning btn-lg btn-block">Details</a>
 
-                                </div>
+
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">Last updated {{ $enterprise->created_at }}</small>
+                                <small class="text-muted">Modifier il y'a {{ $enterprise->date }}</small>
                             </div>
                         </div>
 
@@ -243,7 +300,7 @@
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="counter-wrapper">
-                        <img src="{{ asset('assets/images/banner/ban13.jpeg') }}" class="img-fluid max-width: 200px;"
+                        <img src="{{ asset('assets/images/b6.jpeg') }}" class="img-fluid max-width: 200px;"
                             alt="Image" />
                     </div>
                 </div>
@@ -266,10 +323,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="tj-process-item">
-                        <img src="{{ asset('assets/images/service/a1.jpeg') }}" alt="Image" />
+                        <img src="{{ asset('assets/images/b1.jpeg') }}" style="width: 360px; height: 200px;" alt="Image" />
                         <div class="process-content">
                             <div class="process-icon">
                                 <i class="flaticon-renewable-energy"></i>
@@ -282,7 +340,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="tj-process-item">
-                        <img src="{{ asset('assets/images/service/a9.jpeg') }}" alt="Image" />
+                        <img src="{{ asset('assets/images/b2.jpeg') }}" style="width: 360px; height: 200px;" alt="Image" />
                         <div class="process-content">
                             <div class="process-icon">
                                 <i class="flaticon-quality"></i>
@@ -295,7 +353,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="tj-process-item">
-                        <img src="{{ asset('assets/images/service/a3.jpeg') }}" alt="Image" />
+                        <img src="{{ asset('assets/images/b3.jpeg') }}" style="width: 360px; height: 200px;" alt="Image" />
                         <div class="process-content">
                             <div class="process-icon">
                                 <i class="flaticon-solar-energy-2"></i>
@@ -926,6 +984,13 @@
         </div>
     </section>
     <!--=========== Video Section End =========-->
+
+    <script>
+        const val1 = 10; // Remplacez par la valeur de votre variable
+const val2 = 5; // Remplacez par la valeur de votre variable
+
+const resultat = (val1 / val2) * 100; 
+    </script>
 
     @include('layouts.footer')
 </body>

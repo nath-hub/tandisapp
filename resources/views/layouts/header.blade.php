@@ -52,10 +52,10 @@
              </div>
              <ul>
                  <li>
-                     <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                     <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                     
+                     <a href="https://chat.whatsapp.com/JMsHo77fZsfDtOPEw9RBb0"><i class="fa-brands fa-whatsapp"></i></a>
+                     <a href="https://www.linkedin.com/in/pascal-lord-97a173260"><i class="fa-brands fa-linkedin"></i></a>
+                     <a href="https://www.facebook.com/profile.php?id=100075959528088"><i class="fa-brands fa-facebook-f"></i></a>
                  </li>
              </ul>
          </div>
@@ -138,10 +138,10 @@
                          <div class="header-share">
                              <ul>
                                  <li>
-                                     <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                                     <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                     
+                                     <a href="https://chat.whatsapp.com/JMsHo77fZsfDtOPEw9RBb0"><i class="fa-brands fa-whatsapp"></i></a>
+                                     <a href="https://www.linkedin.com/in/pascal-lord-97a173260"><i class="fa-brands fa-linkedin"></i></a>
+                                     <a href="https://www.facebook.com/profile.php?id=100075959528088"><i class="fa-brands fa-facebook-f"></i></a>
                                  </li>
                              </ul>
                          </div>

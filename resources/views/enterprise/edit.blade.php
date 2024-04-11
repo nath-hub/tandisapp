@@ -30,9 +30,28 @@
                         <div>
                             <div class="accordion-body">
                                 <div class="gy-3">
+                                    <caption>Modifier les informations de l'entreprise</caption>
 
                                     <table class="table caption-top">
-                                        <caption>Modifier les informations de l'entreprise</caption>
+
+                                        <div class="user-image-container">
+                                            <img id="imagePreview" class="rounded-circle" height="200px" width="200px"
+                                                src="{{ $enterprise->image }}" value="{{ $enterprise->image }}" /><br />
+
+                                            <div class="custom-file-upload py-3">
+                                                <button type="button" class="btn btn-success"
+                                                    id="imageUploadButton">Choisir
+                                                    une image</button>
+                                                <input type="file"
+                                                    class="d-none  @error('image') is-invalid @enderror"
+                                                    id="imageUpload" name="image" accept="image/*"
+                                                    onchange="handleImageUpload(this)">
+                                                @if ($errors->has('image'))
+                                                    <span
+                                                        class="text-danger text-left">{{ $errors->first('image') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
 
                                         <tbody>
                                             <tr>
@@ -363,7 +382,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                 
+
                                                 <tr>
                                                     <th scope="row">livres : </th>
                                                     <td>
@@ -412,7 +431,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                               
+
                                                 <tr>
                                                     <th scope="row">objectif : </th>
                                                     <td>
@@ -548,7 +567,29 @@
         </form>
     </div>
 
-    <script></script>
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreview = document.getElementById('imagePreview');
+
+        const addFileBtn = document.querySelector('.add-file-btn');
+
+        const imageUploadButton = document.getElementById('imageUploadButton');
+
+        imageUploadButton.addEventListener('click', function() {
+            imageUpload.click();
+        });
+
+        imageUpload.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 
 </body>
 

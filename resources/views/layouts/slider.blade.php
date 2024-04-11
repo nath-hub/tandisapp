@@ -5,7 +5,7 @@
         <div class="swiper hero-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide tj-slider-item">
-                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban1.jpg"></div>
+                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban18.jpeg"></div>
                     <div class="container">
                         <div class="slider-content">
                             <h1 class="slider-title">Sécurité</h1>
@@ -20,11 +20,10 @@
                                         </p>
                                 </div>
                                 <div class="slider-button d-flex">
-                                    <a class="tj-transparent-btn btn" href="{{route('invest.index')}}">
+                                    <a class="tj-transparent-btn btn" href="{{ route('home.projet') }}">
                                         Investir <i class="flaticon-right-arrow"></i>
                                     </a>
-                                    <a class="tj-transparent-btn btn py-3" href="">Soumettre un projet <i
-                                        class="flaticon-right-arrow"></i></a>
+                                   
                                 </div>
                                  
                             </div>
@@ -32,7 +31,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide tj-slider-item">
-                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban4.jpg"></div>
+                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban19.jpg"></div>
                     <div class="container">
                         <div class="slider-content">
                             <h1 class="slider-title">Professionalisme</h1>
@@ -47,7 +46,7 @@
                                     </p>
                                 </div>
                                 <div class="slider-button d-flex">
-                                    <a class="tj-transparent-btn btn" href="{{route('invest.index')}}">
+                                    <a class="tj-transparent-btn btn" href="{{ route('home.projet') }}">
                                         Investir <i class="flaticon-right-arrow"></i>
                                     </a>
                                 </div>
@@ -56,7 +55,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide tj-slider-item">
-                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban6.jpg"></div>
+                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban19.jpeg"></div>
                     <div class="container">
                         <div class="slider-content">
                             <h1 class="slider-title">Transparence</h1>
@@ -71,7 +70,7 @@
                                         fonds que vous nous confiez pour des tiers.</p>
                                 </div>
                                 <div class="slider-button d-flex">
-                                    <a class="tj-transparent-btn btn" href="{{route('invest.index')}}">
+                                    <a class="tj-transparent-btn btn" href="{{ route('home.projet') }}">
                                         Investir <i class="flaticon-right-arrow"></i>
                                     </a>
                                 </div>
@@ -80,7 +79,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide tj-slider-item">
-                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban6.jpg"></div>
+                    <div class="slider-bg-image" data-bg-image="assets/images/banner/ban19.jpeg"></div>
                     <div class="container">
                         <div class="slider-content">
                             <h1 class="slider-title">Professionalisme</h1>
@@ -95,7 +94,7 @@
                                     </p>
                                 </div>
                                 <div class="slider-button d-flex">
-                                    <a class="tj-transparent-btn btn" href="{{route('invest.index')}}">
+                                    <a class="tj-transparent-btn btn" href="{{ route('home.projet') }}">
                                         Investir <i class="flaticon-right-arrow"></i>
                                     </a>
                                 </div>
@@ -118,7 +117,7 @@
                         </div>
                         <div class="service-text">
                             <h5 class="title">Utilisateurs</h5>
-                            <span class="sub-title">46 Personnes connectées</span>
+                            <span class="sub-title">Environs 100</span>
                         </div>
                         <div class="item-shape">
                             <img src="assets/images/shape/service-1.svg" alt="Shape" />
@@ -132,7 +131,7 @@
                         </div>
                         <div class="service-text">
                             <h5 class="title">Objectif</h5>
-                            <span class="sub-title">6280000 frs</span>
+                            <span class="sub-title">Environs 100.000.000 frs</span>
                         </div>
                         <div class="item-shape">
                             <img src="assets/images/shape/service-1.svg" alt="Shape" />
@@ -146,7 +145,7 @@
                         </div>
                         <div class="service-text">
                             <h5 class="title">Montant Investit</h5>
-                            <span class="sub-title">Total  530000 frs</span>
+                            <span class="sub-title">Environs  50.000.000 frs</span>
                         </div>
                         <div class="item-shape">
                             <img src="assets/images/shape/service-1.svg" alt="Shape" />
