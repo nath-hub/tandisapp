@@ -3,16 +3,9 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
-use Illuminate\Validation\Rule;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Request;
-// use Illuminate\Http\File;
-use Nette\Utils\Image;
+use Illuminate\Contracts\Auth\MustVerifyEmail; 
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+use Laravel\Fortify\Contracts\ProfileInformationUpdatedResponse;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -59,11 +52,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'birth_date' => $input['birth_date'],
                 // 'photo' => $avatarPath,
             ])->save();
+
+            return app(ProfileInformationUpdatedResponse::class);
         };
 
-        return redirect()->route('home', [
-            'user' => $user, 
-        ])->with('success', 'Utilisateur mis à jour avec succès !'); 
+         
     }
 
     /**
@@ -71,7 +64,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      *
      * @param  array<string, string>  $input
      */
-    protected function updateVerifiedUser(User $user, array $input): void
+    protected function updateVerifiedUser(User $user, array $input)
     {
         $user->forceFill([
             'name' => $input['name'],
@@ -86,6 +79,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ])->save();
 
         $user->sendEmailVerificationNotification();
+
+        return app(ProfileInformationUpdatedResponse::class);
     }
 
   

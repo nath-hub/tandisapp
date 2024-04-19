@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('photo')->nullable();
+            $table->string('cnirecto')->nullable();
+            $table->string('cniverso')->nullable();
             $table->enum('statut', ['ACTIF', 'INACTIF'])->default('ACTIF');
             $table->string('phone')->nullable()->unique();
             $table->string('town')->nullable();

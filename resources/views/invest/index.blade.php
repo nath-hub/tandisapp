@@ -3,9 +3,11 @@
 
 <body>
 
-  @include('element.head')
-  @include('element.header')
-  @include('element.headsection')
+    @include('element.head')
+    @include('element.header')
+    @include('element.headsection')
 
-  @include('element.footer')
+    @include('element.footer')
+</body>
+
 </html>

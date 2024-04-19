@@ -34,21 +34,37 @@
 
                                     <table class="table caption-top">
 
-                                        <div class="user-image-container">
+                                        {{-- <div class="user-image-container">
                                             <img id="imagePreview" class="rounded-circle" height="200px" width="200px"
                                                 src="{{ $enterprise->image }}" value="{{ $enterprise->image }}" /><br />
 
                                             <div class="custom-file-upload py-3">
                                                 <button type="button" class="btn btn-success"
                                                     id="imageUploadButton">Choisir
-                                                    une image</button>
+                                                    une image de couverture</button>
                                                 <input type="file"
-                                                    class="d-none  @error('image') is-invalid @enderror"
-                                                    id="imageUpload" name="image" accept="image/*"
+                                                    class="d-none  @error('imageS') is-invalid @enderror"
+                                                    id="imageUpload" name="images" accept="image/*"
                                                     onchange="handleImageUpload(this)">
-                                                @if ($errors->has('image'))
-                                                    <span
-                                                        class="text-danger text-left">{{ $errors->first('image') }}</span>
+                                                @if ($errors->has('images'))
+                                                    <span class="text-danger text-left">{{ $errors->first('images') }}</span>
+                                                @endif
+                                            </div>
+                                        </div> --}}
+
+                                        <div class="user-image-container">
+                                            <img id="imagePreview" class="rounded-circle" height="200px" width="200px"
+                                                src="{{ asset($enterprise->image) }}"
+                                                value="{{ $enterprise->image }}" /><br />
+            
+                                            <div class="custom-file-upload py-3">
+                                                <button type="button" class="btn btn-success" id="imageUploadButton">Choisir
+                                                    une image de couverture</button>
+                                                <input type="file" class="d-none  @error('photo') is-invalid @enderror"
+                                                    id="imageUpload" name="photo" accept="image/*"
+                                                    onchange="handleImageUpload(this)">
+                                                @if ($errors->has('photo'))
+                                                    <span class="text-danger text-left">{{ $errors->first('photo') }}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -301,6 +317,24 @@
                             <div id="profil" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
+                                    <div class="user-image-container">
+                                        <img id="imagePreview" class="rounded-circle" height="200px" width="200px"
+                                            src="{{ $enterprise->image }}" value="{{ $enterprise->image }}" /><br />
+
+                                        <div class="custom-file-upload py-3">
+                                            <button type="button" class="btn btn-success"
+                                                id="imageUploadButton">Choisir
+                                                une image de couverture</button>
+                                            <input type="file"
+                                                class="d-none  @error('image') is-invalid @enderror"
+                                                id="imageUpload" name="image" accept="image/*"
+                                                onchange="handleImageUpload(this)">
+                                            @if ($errors->has('image'))
+                                                <span
+                                                    class="text-danger text-left">{{ $errors->first('image') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="py-5">
 
                                         <table class="table caption-top">

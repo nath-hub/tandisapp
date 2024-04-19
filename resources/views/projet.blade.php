@@ -22,7 +22,7 @@
 
                         <div class="card h-100 text-center">
                             <img src="{{ asset('storage/'.$enterprise->image) }}" class="d-block mx-auto w-50"
-                                alt="...">
+                            style="width: 400px; height: 200px;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $enterprise->name_enterprise }}</h5>
                                 <p class="sec-title">Objectif : {{ $enterprise->objectif }}</p>
@@ -49,6 +49,7 @@
 
                     </div>
                 @endforeach
+ 
             </div>
         </div>
     </div>

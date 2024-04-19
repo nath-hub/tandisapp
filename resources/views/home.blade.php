@@ -3,18 +3,14 @@
 
 @include('layouts.headsection')
 
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+
 
 
 <main>
     <div class="container py-5 d-none d-md-block">
         <div class="row  shadow-lg rounded">
             <div class="col-3 text-center">
-                <img class="rounded" height="150px" width="200px" src="{{ asset('assets/images/pp.jpg' ?? $user->photo) }}"
+                <img class="rounded" height="150px" width="200px" src="{{ asset('storage/' . $user->photo) }}"
                     alt="Image" />
                 <div class="py-1">
                     <a href="{{ route('home.projet') }}" class="btn btn-success">investir</a>
@@ -70,6 +66,11 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="gy-3">
+                            @if ($user->cnirecto === null || $user->cniverso === null)
+                                <div class="alert alert-danger">
+                                    {{ __("Completez les informations de votre compte avant d'investir") }}
+                                </div>
+                            @endif
                             <table class="table caption-top">
                                 <caption>Informations de utilisateur</caption>
 
@@ -136,33 +137,52 @@
                                     <th scope="col-2">Recu</th>
                                 </tr>
                             </thead>
+
                             @if (isset($invest))
-                                @foreach ($invest as $item)
-                                    @if (isset($phase))
-                                        @foreach ($phase as $phases)
-                                            @if (isset($enterprises))
-                                                @foreach ($enterprises as $enter)
-                                                    <tbody>
-                                                        <tr class="table-active">
-                                                            <td>{{ $enter->name_enterprise }}</td>
-                                                            <th>{{ $phases->phase }}</th>
-                                                            <td>{{ $item->total_payer }}</td>
-                                                            <td>{{ $item->nombre_action }}</td>
-                                                            <td>{{ $item->created_at }}</td>
-                                                            <td>{{ $phases->statut_phase }}</td>
-                                                            <td><a class="btn btn-outline-warning"
-                                                                    href="{{ asset($user->type) }}">Lire le
-                                                                    PDF</a></td>
-                                                        </tr>
-                                                    </tbody>
-                                                @endforeach
-                                            @endif
-                                        @endforeach
-                                    @endif
+                                @foreach ($invest as $investment)
+                                    <tr>
+                                        <td>{{ $investment->name_enterprise }}</td>
+                                        <td>{{ $investment->phase }}</td>
+                                        <td>{{ $investment->prix_action }}</td>
+                                        <td>{{ $investment->nombre_action }}</td>
+                                        <td>{{ $investment->created_at }}</td>
+                                        <td>{{ $investment->statut_phase }}</td>
+                                        <td><a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Lire le
+                                                PDF</a></td>
+                                    </tr>
                                 @endforeach
                             @else
-                                <p>Vous n'avez pas encore investis !!!</p>
+                                <tr>
+                                    <td colspan="7" class="text-center">Aucun investissement trouvé</td>
+                                </tr>
                             @endif
+                            {{-- @if (isset($phase))
+                                    @foreach ($phase as $phases)
+                                        @if (isset($enterprises))
+                                            @foreach ($enterprises as $enter)
+                                                @if (isset($invest))
+                                                    @foreach ($invest as $item)
+                                                        <tbody>
+                                                            <tr class="table-active">
+                                                                <td>{{ $enter->name_enterprise }}</td>
+                                                                <th>{{ $phase->phase }}</th>
+                                                                <td>{{ $item->total_payer }}</td>
+                                                                <td>{{ $item->nombre_action }}</td>
+                                                                <td>{{ $item->created_at }}</td>
+                                                                <td>{{ $phase->statut_phase }}</td>
+                                                                <td><a class="btn btn-outline-warning"
+                                                                        href="{{ asset($user->type) }}">Lire le
+                                                                        PDF</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <p>Vous n'avez pas encore investis !!!</p>
+                                @endif --}}
                         </table>
                     </div>
                 </div>
@@ -250,7 +270,7 @@
             <div class="">
                 <div class="row">
                     <div class="col-4 py-4">
-                        <img src="{{ asset('assets/images/pp.jpg' ?? $user->photo) }}" alt="Image de profil"
+                        <img src="{{ asset('storage/' . $user->photo) }}" alt="Image de profil"
                             class="rounded-circle" width="150" height="140">
                     </div>
                     <div class="col-8">
@@ -297,14 +317,18 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="py-5">
-
+                            @if ($user->cnirecto === null || $user->cniverso === null)
+                                <div class="alert alert-danger">
+                                    {{ __("Completez les informations de votre compte avant d'investir") }}
+                                </div>
+                            @endif
                             <table class="table caption-top">
                                 <caption>Informations de utilisateur</caption>
 
                                 <tbody>
                                     <tr>
                                         <th scope="row">Nom : </th>
-                                        <td>{{ $user->photo }} </td>
+                                        <td>{{ $user->name }} </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Email: </th>
@@ -366,28 +390,18 @@
                                     </thead>
 
                                     @if (isset($invest))
-                                        @foreach ($invest as $item)
-                                            @if (isset($phase))
-                                                @foreach ($phase as $phases)
-                                                    @if (isset($enterprises))
-                                                        @foreach ($enterprises as $enter)
-                                                            <tbody>
-                                                                <tr class="table-active">
-                                                                    <td>{{ $enter->name_enterprise }}</td>
-                                                                    <th>{{ $phases->phase }}</th>
-                                                                    <td>{{ $item->total_payer }}</td>
-                                                                    <td>{{ $item->nombre_action }}</td>
-                                                                    <td>{{ $item->created_at }}</td>
-                                                                    <td>{{ $phases->statut_phase }}</td>
-                                                                    <td><a class="btn btn-outline-warning"
-                                                                            href="{{ asset($user->type) }}">Lire le
-                                                                            PDF</a></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        @endforeach
-                                                    @endif
-                                                @endforeach
-                                            @endif
+                                        @foreach ($invest as $investment)
+                                            <tr>
+                                                <td>{{ $investment->name_enterprise }}</td>
+                                                <td>{{ $investment->phase }}</td>
+                                                <td>{{ $investment->prix_action }}</td>
+                                                <td>{{ $investment->nombre_action }}</td>
+                                                <td>{{ $investment->created_at }}</td>
+                                                <td>{{ $investment->statut_phase }}</td>
+                                                <td><a class="btn btn-outline-warning"
+                                                        href="{{ asset($user->type) }}">Lire le
+                                                        PDF</a></td>
+                                            </tr>
                                         @endforeach
                                     @else
                                         <p>Vous n'avez pas encore investis !!!</p>

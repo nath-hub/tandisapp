@@ -229,7 +229,7 @@
 
                         <div class="card h-100 text-center">
                             <img src="{{ asset('storage/'.$enterprise->image) }}" class="d-block mx-auto w-50"
-                                alt="...">
+                            style="width: 400px; height: 200px;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $enterprise->name_enterprise }}</h5>
                                 <p class="sec-title">Objectif : {{ $enterprise->objectif }}</p>
@@ -315,10 +315,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="tj-sec-heading text-center">
-                        <span class="sub-title">Our Working Process</span>
+                        <span class="sub-title">L'acte OHADA prevoit :</span>
                         <h2 class="sec-title">
-                            Inspiring Interiors Exceptional <br />
-                            <span>Of Experiences</span>
+                           en 2014 <br />
+                            <span></span>
                         </h2>
                     </div>
                 </div>
@@ -333,7 +333,8 @@
                                 <i class="flaticon-renewable-energy"></i>
                             </div>
                             <div class="process-title">
-                                <h5 class="title">Charcutterie</h5>
+                                <h5 class="title">50 000 000 XAF</h5> 
+                                <strong class="text-bg-success">La valeur maximale de levée de fond</strong>  
                             </div>
                         </div>
                     </div>
@@ -346,7 +347,8 @@
                                 <i class="flaticon-quality"></i>
                             </div>
                             <div class="process-title">
-                                <h5 class="title">Research & Analysis</h5>
+                                <h5 class="title">10 000 XAF</h5> 
+                                <strong class="text-bg-success">La Valeur de la part</strong>  
                             </div>
                         </div>
                     </div>
@@ -359,7 +361,8 @@
                                 <i class="flaticon-solar-energy-2"></i>
                             </div>
                             <div class="process-title">
-                                <h5 class="title">Renewable Energy</h5>
+                                <h5 class="title">1 An</h5>
+                                <strong class="text-bg-success">Temps de levée de fonds maximal</strong>  
                             </div>
                         </div>
                     </div>
@@ -928,62 +931,6 @@
             </div>
         </section> --}}
     <!--=========== Blog Section End =========-->
-
-    <!--=========== Video Section Start =========-->
-    <section class="tj-video-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="tj-video-area">
-                        <div class="video-image">
-                            <img src="{{ asset('assets/images/project/video-image.jpg') }}" alt="Image" />
-                        </div>
-                        <div class="video-box">
-                            <div class="circle pulse video-icon">
-                                <a class="popup-videos-button" data-autoplay="true" data-vbtype="video"
-                                    href="https://www.youtube.com/watch?v=ADmQTw4qqTY">
-                                    <i class="fa-solid fa-play"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="video-shape">
-                            <img class="shape-1" src="{{ asset('assets/images/shape/shape-2.svg') }}"
-                                alt="Shape" />
-                            <img class="shape-2" src="{{ asset('assets/images/shape/shape-3.svg') }}"
-                                alt="Shape" />
-                        </div>
-                        <div class="video-shape2">
-                            <img class="shape-1" src="{{ asset('assets/images/shape/shape-2.svg') }}"
-                                alt="Shape" />
-                            <img class="shape-2" src="{{ asset('assets/images/shape/shape-3.svg') }}"
-                                alt="Shape" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="video-sec-shape">
-            <div class="video-shape3">
-                <img class="shape-1" src="{{ asset('assets/images/shape/shape-2.svg') }}" alt="Shape" />
-                <img class="shape-2" src="{{ asset('assets/images/shape/shape-3.svg') }}" alt="Shape" />
-            </div>
-            <div class="video-shape4">
-                <img class="shape-1" src="{{ asset('assets/images/shape/shape-2.svg') }}" alt="Shape" />
-                <img class="shape-2" src="{{ asset('assets/images/shape/shape-3.svg') }}" alt="Shape" />
-            </div>
-        </div>
-        <div class="video-sec-shape2">
-            <div class="video-shape5">
-                <img class="shape-1" src="{{ asset('assets/images/shape/shape-2.svg') }}" alt="Shape" />
-                <img class="shape-2" src="{{ asset('assets/images/shape/shape-3.svg') }}" alt="Shape" />
-            </div>
-            <div class="video-shape6">
-                <img class="shape-1" src="{{ asset('assets/images/shape/shape-2.svg') }}" alt="Shape" />
-                <img class="shape-2" src="{{ asset('assets/images/shape/shape-3.svg') }}" alt="Shape" />
-            </div>
-        </div>
-    </section>
-    <!--=========== Video Section End =========-->
 
     <script>
         const val1 = 10; // Remplacez par la valeur de votre variable

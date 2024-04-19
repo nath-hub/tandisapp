@@ -26,4 +26,9 @@ class Invest extends Model
     {
         return $this->belongsTo(Enterprise::class);
     }
+
+    public function phase()
+    {
+        return $this->belongsTo(Phase::class);
+    }
 }

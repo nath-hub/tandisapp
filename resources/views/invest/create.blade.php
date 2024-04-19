@@ -110,7 +110,7 @@
                                 <td>
                                     <div class="col-5">
                                         <div class="form-group border " style="border-radius: 10px;">
-                                            <input type="number" placeholder="Nombre d'action" class="form-control"
+                                            <input type="double" placeholder="Nombre d'action" class="form-control"
                                                 name="nombre_action" id="quantity" onchange="calculateTotalPrice()">
                                             @if ($errors->has('nombre_action'))
                                                 <span

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EnterpriseUpdateRequest;
 use App\Models\Enterprise;
+use Exception;
 use Illuminate\Http\Request;
 
 class EnterpriseController extends Controller
@@ -11,10 +12,14 @@ class EnterpriseController extends Controller
 
     public function index()
     {
-        $enterprises = Enterprise::paginate(3);
+        $enterprises = Enterprise::where('state', 'ACTIF')->paginate(3);
 
         foreach ($enterprises as $enter) {
-            $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
+            if ($enter->objectif = 0) {
+                $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
+            } else {
+                $avancement = 0;
+            }
             $enter->bar = $avancement;
             $enter->progress = $avancement . '%';
 
@@ -38,7 +43,7 @@ class EnterpriseController extends Controller
                 $unite_temps = "jour";
                 $nb_unite_temps = round($difference_secondes / 86400);
             } else {
-                
+
                 return;
             }
 
@@ -46,9 +51,9 @@ class EnterpriseController extends Controller
                 $unite_temps .= "s";
             }
 
-            $enter->date = $nb_unite_temps ." " . $unite_temps;
+            $enter->date = $nb_unite_temps . " " . $unite_temps;
         }
-        
+
         return view('welcome', compact('enterprises'));
     }
 
@@ -93,16 +98,22 @@ class EnterpriseController extends Controller
             $politique = $request->politiques->store('fichiers/tmp', 'public');
         }
 
-        if (empty($request->file('image'))) {
-            if (empty($enterprise->image)) {
-                $image = ('assets/images/pp.jpg');
+        // if (empty($request->file('image'))) {
+        //     if (empty($enterprise->image)) {
+        //         $image = ('assets/images/pp.jpg');
 
-            } else {
-                $image = $enterprise->image;
-            }
+        //     } else {
+        //         $image = $enterprise->image;
+        //     }
 
+        // } else {
+        //     $image = $request->image->store('shop/tmp', 'public');
+        // }
+
+        if (!empty($request->file('photo'))) {
+            $image = $request->photo->store('shop/tmp', 'public');
         } else {
-            $image = $request->image->store('shop/tmp', 'public');
+            $image = $enterprise->image;
         }
 
         $enterprise->siren = $request->sirens;
@@ -144,7 +155,12 @@ class EnterpriseController extends Controller
 
 
         foreach ($enterprises as $enter) {
-            $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
+             if ($enter->objectif = 0) {
+                $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
+            } else {
+                $avancement = 0;
+            }
+
             $enter->bar = $avancement;
             $enter->progress = $avancement . '%';
 
@@ -168,7 +184,7 @@ class EnterpriseController extends Controller
                 $unite_temps = "jour";
                 $nb_unite_temps = round($difference_secondes / 86400);
             } else {
-                
+
                 return;
             }
 
@@ -176,7 +192,7 @@ class EnterpriseController extends Controller
                 $unite_temps .= "s";
             }
 
-            $enter->date = $nb_unite_temps ." " . $unite_temps;
+            $enter->date = $nb_unite_temps . " " . $unite_temps;
         }
 
         return view('projet', compact('enterprises'));

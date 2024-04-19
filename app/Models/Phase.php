@@ -22,4 +22,9 @@ class Phase extends Model
     {
         return $this->belongsTo(Enterprise::class);
     }
+
+    public function investissement()
+    {
+        return $this->hasOne(Invest::class);
+    }
 }

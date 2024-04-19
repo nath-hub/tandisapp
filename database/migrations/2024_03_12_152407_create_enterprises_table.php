@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('nombre_action')->nullable(); 
             $table->string('objectif')->nullable();
             $table->integer('montant_actuel')->nullable();
-            $table->class_basename('Foo\Bar\Baz')('image')->nullable();
+            $table->string('image')->nullable();
             $table->string('web_site')->nullable();
             $table->string('description')->nullable();
             $table->enum('state', ['ACTIF', 'INACTIF'])->default('INACTIF');

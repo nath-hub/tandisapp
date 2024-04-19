@@ -21,7 +21,7 @@ class Enterprise extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function phases()
@@ -32,5 +32,10 @@ class Enterprise extends Model
     public function investisseurs()
     {
         return $this->belongsToMany(User::class, 'invests');
+    }
+
+    public function investissements()
+    {
+        return $this->hasMany(Invest::class);
     }
 }

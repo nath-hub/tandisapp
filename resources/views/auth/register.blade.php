@@ -111,17 +111,17 @@
 
                             <div class="collapse" data-bs-target="#show-fields">
                                 <div class="form-group pb-1 border mb-3" style="border-radius: 10px;">
-                                    <input type="name" name="name_enterprise" placeholder="Nom de l'entreprise"
+                                    <input type="name" name="name_enterprise" placeholder="Nom de l'entreprise *"
                                         class="form-control" aria-describedby="nameHelp">
                                 </div>
 
                                 <div class="form-group pb-1 border mb-3" style="border-radius: 10px;">
-                                    <input type="name" name="address" placeholder="adresse de l'entreprise"
+                                    <input type="name" name="address" placeholder="adresse de l'entreprise *"
                                         class="form-control" aria-describedby="nameHelp">
                                 </div>
 
                                 <div class="form-group pb-1 border mb-3" style="border-radius: 10px;">
-                                    <input type="web_site" name="web_site" placeholder="Site de l'entreprise *"
+                                    <input type="web_site" name="web_site" placeholder="Site de l'entreprise"
                                         class="form-control" aria-describedby="web_siteHelp">
                                 </div>
                             </div>

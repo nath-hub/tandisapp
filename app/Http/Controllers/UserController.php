@@ -96,7 +96,7 @@ class UserController extends Controller
                 'email' => 'Veuillez verifier votre compte en validant votre adresse mail',
             ]);
         }
-    } 
+    }
 
     public function loginUsingFacebook()
     {
@@ -176,11 +176,14 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $entreprises = $user->invests;
 
+        
+
+        $entreprises = $user->invests;
+ 
         if (count($entreprises) > 0) {
             foreach ($entreprises as $item) {
-                $invest = Invest::with('entreprise')->where('user_id', $user->id)->where('enterprise_id', $item->id)->get();
+                $invest[] = Invest::with('entreprise')->where('user_id', $user->id)->where('enterprise_id', $item->id)->get();
 
                 $items[] = $item;
             }
@@ -206,46 +209,44 @@ class UserController extends Controller
     public function edit(user $user)
     {
 
-        // $enterprise = Enterprise::where('user_id', $user->id)->first();
-
+        $enterprise = Enterprise::where('user_id', $user->id)->first();
+// dd($enterprise);
         return redirect()->route('profile.edit', [
             'user' => $user,
-            // 'enterprise' => $enterprise
+            'enterprise' => $enterprise
         ]);
     }
     public function update(Request $request, User $user)
     {
-        dd($request->all());
+        // dd($request->all());
 
-        if (empty($request->file('photo'))) {
-            if (empty($user->photo)) {
-                $avatarPath = ('assets/images/pp.jpg');
-
-            } else {
-                $avatarPath = $user->photo;
-            }
-
+        if (!empty($request->file('photo'))) {
+            $avatarPath = $request->photo->store('cni/tmp', 'public');
         } else {
-            $avatarPath = $request->photo->store('users/tmp', 'public');
+            $avatarPath = $user->photo;
         }
 
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->town = $request->town;
-        $user->country = $request->country;
-        $user->birth_date = $request->birth_date;
-        $user->type = $request->type;
+
+        if (!empty($request->file('cniverso'))) {
+            $cniverso = $request->cniverso->store('cni/tmp', 'public');
+        } else {
+            $cniverso = $user->cniverso;
+        }
+
+
+        if (!empty($request->file('cnirecto'))) {
+            $cnirecto = $request->cnirecto->store('cni/tmp', 'public');
+        } else {
+            $cnirecto = $user->cnirecto;
+        }
+
+        $user->cniverso = $cniverso;
+        $user->cnirecto = $cnirecto;
         $user->photo = $avatarPath;
 
         $user->save();
 
-        $enterprise = Enterprise::where('user_id', $user->id)->first();
-
-        return redirect()->route('users.show', [
-            'user' => $user,
-            'photo' => asset("$user->photo"),
-            'enterprise' => $enterprise
-        ])->with('success', 'Utilisateur mis à jour avec succès !');
+        return redirect()->route('profile.edit')->with('success', 'Utilisateur mis à jour avec succès !');
     }
     public function destroy(User $user)
     {
