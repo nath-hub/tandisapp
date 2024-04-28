@@ -167,15 +167,16 @@
                                 <td>
                                     <div class="col">
                                         <div class="form-group border " style="border-radius: 10px;">
-                                            <input type="email" disabled id="disabledTextInput" placeholder="Email "
-                                                class="form-control" name="email" value="{{ $user->email }}">
+                                            <input type="email" disabled id="disabledTextInput"
+                                                placeholder="Email " class="form-control" name="email"
+                                                value="{{ $user->email }}">
                                             @if ($errors->has('email'))
                                                 <span
                                                     class="text-danger text-left">{{ $errors->first('email') }}</span>
                                             @endif
                                         </div>
                                     </div>
-                                </td> 
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="col-5">Téléphone : </th>
@@ -201,7 +202,8 @@
                                     <div class="col">
                                         <div class="form-group border " style="border-radius: 10px;">
                                             <input type="text" placeholder="Entreprise" class="form-control"
-                                                name="name_enterprise" disabled value="{{ $enterprise->name_enterprise }}">
+                                                name="name_enterprise" disabled
+                                                value="{{ $enterprise->name_enterprise }}">
                                             @if ($errors->has('name_enterprise'))
                                                 <span
                                                     class="text-danger text-left">{{ $errors->first('name_enterprise') }}</span>
@@ -215,7 +217,7 @@
                                 <td>
                                     <div class="col">
                                         <div class="form-group border " style="border-radius: 10px;">
-                                            <input type="number" placeholder="Prix d'une action" id="unitPrice"
+                                            <input type="number" placeholder="Prix d'une action" id="unit"
                                                 value="{{ $phase->prix_action }}" disabled class="form-control"
                                                 name='prix_action'>
                                             @if ($errors->has('prix_action'))
@@ -231,9 +233,9 @@
                                 <td>
                                     <div class="col">
                                         <div class="form-group border " style="border-radius: 10px;">
-                                            <input type="number" placeholder="Prix total a payer" id="totalPrice"
+                                            <input type="number" placeholder="Prix total a payer" id="total"
                                                 class="form-control" name="total_payer"
-                                                onchange="calculatePriceUnity()">
+                                              >
                                             @if ($errors->has('total_payer'))
                                                 <span
                                                     class="text-danger text-left">{{ $errors->first('total_payer') }}</span>
@@ -248,7 +250,7 @@
                                     <div class="col">
                                         <div class="form-group border " style="border-radius: 10px;">
                                             <input type="number" placeholder="Nombre d'action" class="form-control"
-                                                name="nombre_action" id="quantity" onchange="calculateTotalPrice()">
+                                                name="nombre_action" id="quantite">
                                             @if ($errors->has('nombre_action'))
                                                 <span
                                                     class="text-danger text-left">{{ $errors->first('nombre_action') }}</span>
@@ -279,18 +281,47 @@
         let quantite = Number(document.getElementById("quantity").value);
 
         let prix = Number(document.getElementById("unitPrice").value);
-
-        let total = Number(quantite * prix);
-        document.getElementById("totalPrice").value = total;
+        if (!isNaN(quantite) && !isNaN(prix)) {
+            let total = Number(quantite * prix);
+            console.log(total, quantite, prix);
+            document.getElementById("totalPrice").value = total;
+        } else {
+            document.getElementById("quantity").value = "Erreur de saisie";
+        }
     }
 
     function calculatePriceUnity() {
         let quantite = Number(document.getElementById("unitPrice").value);
 
         let prix = Number(document.getElementById("totalPrice").value);
+        if (!isNaN(quantite) && !isNaN(prix)) {
+            console.log(quantite);
+            let total = Number(prix / quantite);
+            document.getElementById("quantity").value = total;
+        } else {
+            document.getElementById("quantity").value = "Erreur de saisie";
+        }
+    }
 
-        let total = Number(prix / quantite);
-        document.getElementById("quantity").value = total;
+    document.getElementById("quantite").addEventListener("change", calculerMontant);
+    document.getElementById("unit").addEventListener("change", calculerMontant);
+    document.getElementById("total").addEventListener("change", calculerMontant);
+
+
+    function calculerMontant() {
+        const quantite = parseFloat(document.getElementById("quantite").value);
+        const prixUnitaire = parseFloat(document.getElementById("unit").value);
+        const prixTotal = parseFloat(document.getElementById("total").value);
+
+        if (!isNaN(quantite) && !isNaN(prixUnitaire)) {
+            const montantTotal = quantite * prixUnitaire;
+             
+            document.getElementById("total").value = montantTotal; 
+        }else if(!isNaN(prixUnitaire) && !isNaN(prixTotal)){
+            const montant = prixTotal / prixUnitaire;
+             
+            document.getElementById("quantite").value = montant;
+        }
     }
 </script>
 

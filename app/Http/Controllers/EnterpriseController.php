@@ -15,7 +15,7 @@ class EnterpriseController extends Controller
         $enterprises = Enterprise::where('state', 'ACTIF')->paginate(3);
 
         foreach ($enterprises as $enter) {
-            if ($enter->objectif = 0) {
+            if ($enter->objectif ==! 0) {
                 $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
             } else {
                 $avancement = 0;
@@ -151,15 +151,17 @@ class EnterpriseController extends Controller
 
     public function projet()
     {
-        $enterprises = Enterprise::all();
+        $enterprises = Enterprise::where('state', 'ACTIF')->get();
 
 
         foreach ($enterprises as $enter) {
-             if ($enter->objectif = 0) {
+             if ($enter->objectif ==! 0) {
                 $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
             } else {
                 $avancement = 0;
             }
+
+            // dd($enter->objectif);
 
             $enter->bar = $avancement;
             $enter->progress = $avancement . '%';
@@ -193,7 +195,7 @@ class EnterpriseController extends Controller
             }
 
             $enter->date = $nb_unite_temps . " " . $unite_temps;
-        }
+        } 
 
         return view('projet', compact('enterprises'));
     }

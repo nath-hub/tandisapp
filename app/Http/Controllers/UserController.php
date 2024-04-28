@@ -223,7 +223,7 @@ class UserController extends Controller
         if (!empty($request->file('photo'))) {
             $avatarPath = $request->photo->store('cni/tmp', 'public');
         } else {
-            $avatarPath = $user->photo;
+            $avatarPath = $user->photo; 
         }
 
 

@@ -230,12 +230,13 @@
                         </label>
 
                     </li>
+                    <button type="submit" class="btn btn-success py-3">Ajouter</button>
                 </form>
 
                 <div class="col-7">
                     
 
-                    <button type="submit" class="btn btn-success py-3">Ajouter</button>
+                   
                     <div class="py-3">
                         <a class="btn btn-success" href="edit">
                             changer mon mot de passe

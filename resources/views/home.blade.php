@@ -27,7 +27,7 @@
                 @if ($user->type === 'ENTERPRISE')
                     <div class="py-3">
                         <a class="btn btn-success" href="{{ route('enterprise.edit', $enterprise->id) }}">
-                            changer les infos de l'entreprise
+                            Soumettre un projet
                         </a>
                     </div>
                 @endif
@@ -156,33 +156,9 @@
                                     <td colspan="7" class="text-center">Aucun investissement trouvé</td>
                                 </tr>
                             @endif
-                            {{-- @if (isset($phase))
-                                    @foreach ($phase as $phases)
-                                        @if (isset($enterprises))
-                                            @foreach ($enterprises as $enter)
-                                                @if (isset($invest))
-                                                    @foreach ($invest as $item)
-                                                        <tbody>
-                                                            <tr class="table-active">
-                                                                <td>{{ $enter->name_enterprise }}</td>
-                                                                <th>{{ $phase->phase }}</th>
-                                                                <td>{{ $item->total_payer }}</td>
-                                                                <td>{{ $item->nombre_action }}</td>
-                                                                <td>{{ $item->created_at }}</td>
-                                                                <td>{{ $phase->statut_phase }}</td>
-                                                                <td><a class="btn btn-outline-warning"
-                                                                        href="{{ asset($user->type) }}">Lire le
-                                                                        PDF</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-                                @else
-                                    <p>Vous n'avez pas encore investis !!!</p>
-                                @endif --}}
+                            <a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Telecharger le
+                                Contrat</a>
+                         
                         </table>
                     </div>
                 </div>
@@ -289,7 +265,7 @@
                         @if ($user->type === 'ENTERPRISE')
                             <div class="py-3">
                                 <a class="btn btn-success" href="{{ route('enterprise.edit', $enterprise->id) }}">
-                                    changer les infos de l'entreprise
+                                    Soumettre un projet
                                 </a>
                             </div>
                         @endif
@@ -385,7 +361,8 @@
                                             <th scope="col-2">Qté</th>
                                             <th scope="col-3">Date</th>
                                             <th scope="col-3">Statut</th>
-                                            <th scope="col-2">Lire</th>
+                                            <th scope="col-2">Recu</th>
+                                            <th scope="col-2">Contrat</th>
                                         </tr>
                                     </thead>
 
@@ -401,11 +378,16 @@
                                                 <td><a class="btn btn-outline-warning"
                                                         href="{{ asset($user->type) }}">Lire le
                                                         PDF</a></td>
+                                                        <td><a class="btn btn-outline-warning"
+                                                            href="{{ asset($user->type) }}">Lire le
+                                                            PDF</a></td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <p>Vous n'avez pas encore investis !!!</p>
                                     @endif
+                                    <a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Telecharger le
+                                        Contrat</a>
                                 </table>
                             </div>
                         </div>

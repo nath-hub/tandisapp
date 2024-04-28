@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('feedback')->nullable();
             $table->integer("etoile")->nullable(); 
             $table->integer("total_payer");
+            $table->string("recu")->nullable();
+            $table->string("contrat")->nullable();
 
             $table->index(["enterprise_id"], "fk_enterprise_user");
             $table->index(["user_id"], "fk_user_enterprise");

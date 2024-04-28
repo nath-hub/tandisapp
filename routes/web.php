@@ -45,9 +45,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('auth/google', [UserController::class, 'redirectToGoogle'])->name('users.google');
     Route::get('callback/google', [UserController::class, 'handleCallback']);
 
-    // Route::get('auth/login', [UserController::class, 'log'])->name('login');
-    // Route::post('/login', [UserController::class, 'login'])->name('users.login');
-
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index');
         Route::get('/create', [UserController::class, 'create'])->name('users.create');
@@ -95,7 +92,5 @@ Route::group(['middleware' => ['web']], function () {
         Route::delete('/{invest}/delete', [InvestController::class, 'destroy'])->name('invest.destroy');
         Route::get('generate-pdf', [InvestController::class, 'generatePDF']);
         Route::get('view-pdf', [ InvestController::class, 'viewPDF']);
-        Route::get('succes', [ InvestController::class, 'succes'])->name('invest.succes');
-        Route::get('cancel', [ InvestController::class, 'cancel'])->name('invest.cancel');
-    });
+        });
 });

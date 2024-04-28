@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InvestStoreRequest;
 use App\Http\Requests\StorePhaseRequest;
+use App\Mail\OrderShipped;
 use App\Models\Invest;
 use App\Models\User;
 use Carbon\Carbon;
@@ -15,6 +16,11 @@ use Stevebauman\Location\Facades\Location;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Cache;
 use stdClass;
+use Illuminate\Support\Facades\Mail;
+
+
+use Illuminate\Support\Facades\Storage;
+use Nette\Utils\Random;
 
 class InvestController extends Controller
 {
@@ -32,7 +38,7 @@ class InvestController extends Controller
     public function create($enterprise)
     {
 
-        // $this->authorize('create', $enterprise); 
+        if(auth()->user()->cnirecto !== null && auth()->user()->cniverso!== null){
 
         $enterprise = Enterprise::where('id', $enterprise)->first();
 
@@ -41,6 +47,13 @@ class InvestController extends Controller
         $user = auth()->user();
 
         return view('invest.create', compact('user', 'enterprise', 'phase'));
+
+        }else{
+            $enterprises = Enterprise::all();
+            return redirect()->route('home.projet', compact('enterprises'))
+                ->with("error", "Veuillez remplir toutes vos informations personnel avant d'investir, surtout une copie de votre cni");
+              }
+
     }
 
     public function store(Request $request, $enterprise)
@@ -70,8 +83,8 @@ class InvestController extends Controller
         $data->total_payer = $request->total_payer;
         $data->phases_id = $phases;
         $data->created_at = Carbon::now();
- 
-        Cache::add('data' , $data);
+
+        Cache::add('data', $data);
 
         $data = array(
             'amount' => $request->total_payer,
@@ -112,7 +125,7 @@ class InvestController extends Controller
         $rep = json_decode($response);
 
         if ($rep->response == "success") {
- 
+
             return redirect($rep->payment_url);
 
         } else {
@@ -123,54 +136,74 @@ class InvestController extends Controller
 
     }
 
-    public function succes(){ 
+    public function succes()
+    {
 
         $user = auth()->user();
 
-         $data = Cache::get('data');
- 
-         $enterprise = Enterprise::where('id', $data->enterprise_id)->first();
+        $data = Cache::get('data');
 
-         $enterprise->investisseurs()->attach($user, [
+        $data->sous_total = $data->total_payer;
+
+        $remise = $data->total_payer * 0.03;
+
+        $data->remise = $remise;
+
+        $data->total_payer = $data->total_payer + $remise;
+
+        $data->image = "https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im2.png";
+
+        $enterprise = Enterprise::where('id', $data->enterprise_id)->first();
+
+        $pdf = PDF::loadView('facture', compact('data', 'enterprise', 'user'))->setOptions(['isHtml5ParserEnabled' => true]);
+
+        $contrat = PDF::loadView('contrat', compact('data', 'enterprise', 'user'))->setOptions(['isHtml5ParserEnabled' => true]);
+        
+        $num = mt_rand(100000, 999999);
+
+        $name = "facture-" . $num;
+
+        $names = 'contrat' . $user->id;
+
+        $content = $pdf->download($name)->getOriginalContent();
+
+        $contentContrat = $contrat->download($names)->getOriginalContent();
+
+        Storage::put('public/recu/' . $name . '.pdf', $content);
+
+        Storage::put('public/recu/' . $names . '.pdf', $contentContrat);
+
+        $storagePath = storage_path('app/public/recu/' . $name . '.pdf');
+
+        $contratPath = storage_path('app/public/recu/' . $names . '.pdf');
+
+        $enterprise->investisseurs()->attach($user, [
             'prix_action' => $data->prix_action,
             'nombre_action' => $data->nombre_action,
             "total_payer" => $data->total_payer,
+            'recu' => $storagePath,
+            'contrat' => $contratPath,
             "phase_id" => $data->phases_id,
             'created_at' => $data->created_at,
         ]);
 
+        Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
+
         return view('invest.succes', [
-            'success' => "Felicitations, vous vennez d'acheter des actions !!!!!!!!!"
+            'success' => "Felicitations, vous vennez d'acheter des actions !!!!!!!!!",
+            'data' => $data,
+            'enterprise' => $enterprise,
+            'user' => $user
         ]);
- 
+
     }
 
-    public function cancel(){
+    public function cancel()
+    {
         return view('invest.cancel', [
             'success' => "Votre paiement a echouee !!!!!!!!!"
         ]);
     }
 
-    public function generatePDF()
-    {
-        $data = [
-            'title' => 'Votre Facture',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('myPDF', $data);
-
-        return $pdf->download('facture.pdf');
-    }
-
-    public function viewPDF()
-    {
-        $data = [
-            'title' => 'Votre Facture',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('myPDF', $data);
-        return $pdf->setPaper('a4')->stream();
-    }
+   
 }

@@ -24,7 +24,7 @@
              <p class="des">
                  TANDIS Invest est véhicule hybride de financement en capital destiné à promouvoir
                  l’entrepreneuriat africain innovant et à fort impact environnemental et social via
-                 l’épargne des africaines .
+                 l’épargne des africains .
 
 
              </p>
@@ -52,17 +52,22 @@
              </div>
              <ul>
                  <li>
-                     
-                     <a href="https://chat.whatsapp.com/JMsHo77fZsfDtOPEw9RBb0"><i class="fa-brands fa-whatsapp"></i></a>
-                     <a href="https://www.linkedin.com/in/pascal-lord-97a173260"><i class="fa-brands fa-linkedin"></i></a>
-                     <a href="https://www.facebook.com/profile.php?id=100075959528088"><i class="fa-brands fa-facebook-f"></i></a>
+
+                     <a href="https://chat.whatsapp.com/JMsHo77fZsfDtOPEw9RBb0"><i
+                             class="fa-brands fa-whatsapp"></i></a>
+                     <a href="https://www.linkedin.com/in/pascal-lord-97a173260"><i
+                             class="fa-brands fa-linkedin"></i></a>
+                     <a href="https://www.facebook.com/profile.php?id=100075959528088"><i
+                             class="fa-brands fa-facebook-f"></i></a>
+                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                  </li>
              </ul>
          </div>
          <div class="contact-map">
              <iframe
-                 src="https://maps.google.com/maps?q=manhatan&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                 style="border: 0" allowfullscreen=""></iframe>
+                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d497.6029436705163!2d11.5014072!3d3.8480238!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf73220453fb%3A0x79daeaad1a14d61b!2sHappy%20Plus!5e0!3m2!1sfr!2scm!4v1713803493557!5m2!1sfr!2scm"
+                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                 referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
      </div>
  </div>
@@ -138,10 +143,14 @@
                          <div class="header-share">
                              <ul>
                                  <li>
-                                     
-                                     <a href="https://chat.whatsapp.com/JMsHo77fZsfDtOPEw9RBb0"><i class="fa-brands fa-whatsapp"></i></a>
-                                     <a href="https://www.linkedin.com/in/pascal-lord-97a173260"><i class="fa-brands fa-linkedin"></i></a>
-                                     <a href="https://www.facebook.com/profile.php?id=100075959528088"><i class="fa-brands fa-facebook-f"></i></a>
+
+                                     <a href="https://chat.whatsapp.com/JMsHo77fZsfDtOPEw9RBb0"><i
+                                             class="fa-brands fa-whatsapp"></i></a>
+                                     <a href="https://www.linkedin.com/in/pascal-lord-97a173260"><i
+                                             class="fa-brands fa-linkedin"></i></a>
+                                             <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                     <a href="https://www.facebook.com/profile.php?id=100075959528088"><i
+                                             class="fa-brands fa-facebook-f"></i></a>
                                  </li>
                              </ul>
                          </div>
@@ -163,7 +172,7 @@
                              <div class="tj-menu-area d-lg-block d-none">
                                  <nav>
                                      <ul>
-                                         <li class="current-menu-item"><a
+                                         <li><a
                                                  href="{{ route('enterprise.index') }}">Home</a>
                                          </li>
 
@@ -174,10 +183,10 @@
 
                                          <li> <a href="{{ route('home.about') }}">A Propos</a> </li>
                                          @guest
-                                             <li class="has-dropdown current-menu-item">
+                                             <li class="has-dropdown">
                                                  <a href="{{ route('login') }}">Connexion</a>
                                                  <ul class="sub-menu">
-                                                     <li class="current-menu-item">
+                                                     <li>
                                                          <a href="{{ route('login') }}">Se Connecter</a>
                                                      </li>
                                                      <li> <a href="{{ route('register') }}">S'inscrire</a></li>
@@ -186,8 +195,8 @@
                                          @endguest
 
                                          @auth
-                                             <li><a href="{{ route('home') }}"
-                                                     class="nav-link px-2 text-white">Mon Compte</a></li>
+                                             <li  ><a href="{{ route('home') }}">Mon
+                                                     Compte</a></li>
                                          @endauth
                                          <li><a href="{{ route('home.contact') }} ">Contact</a></li>
                                      </ul>
@@ -234,7 +243,7 @@
                              <div class="tj-menu-area d-lg-block d-none" id="main-menu">
                                  <nav id="mobile-menu">
                                      <ul>
-                                         <li class="current-menu-item">
+                                         <li>
                                              <a href="{{ route('enterprise.index') }}">Home</a>
                                          </li>
                                          <li><a href="{{ route('home.service') }}">Services</a></li>
@@ -246,7 +255,7 @@
                                              <li class="has-dropdown current-menu-item">
                                                  <a href="{{ route('login') }}">Connexion</a>
                                                  <ul class="sub-menu">
-                                                     <li class="current-menu-item">
+                                                     <li>
                                                          <a href="{{ route('login') }}">Se Connecter</a>
                                                      </li>
                                                      <li> <a href="{{ route('register') }}">S'inscrire</a></li>
@@ -254,8 +263,8 @@
                                              </li>
                                          @endguest
                                          @auth
-                                             <li><a href="{{ route('home') }}"
-                                                     class="nav-link px-2 text-white">Mon Compte</a></li>
+                                             <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Mon
+                                                     Compte</a></li>
                                          @endauth
 
                                          <li><a href="{{ route('home.contact') }}">Contact</a></li>
@@ -289,3 +298,15 @@
      </div>
  </header>
  <!-- end: Header Area -->
+<script>
+const menuItems = document.querySelectorAll('.menu li');
+
+menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+        // Supprimez la classe 'active' de tous les éléments de menu
+        menuItems.forEach(item => item.classList.remove('active'));
+        // Ajoutez la classe 'active' à l'élément de menu sélectionné
+        item.classList.add('active');
+    });
+});
+</script>
