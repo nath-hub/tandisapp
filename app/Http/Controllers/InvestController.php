@@ -130,7 +130,7 @@ class InvestController extends Controller
 
         } else {
             return redirect()->route('home.projet')->with([
-                'error' => "Echec de l'enregistrement"
+                'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
             ]);
         }
 

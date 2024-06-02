@@ -33,8 +33,8 @@ Route::view('profile/edit',  'profile.edit')->name('profile.edit')->middleware('
 
 Route::get('/', [EnterpriseController::class, 'index'])->name('enterprise.index');
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/cont', function () {
+    return view('contrat');
 });
 
 Route::group(['middleware' => ['web']], function () {

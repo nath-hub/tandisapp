@@ -17,8 +17,8 @@
                         <div class="tj-sec-heading-two">
                             <span class="sub-title">Pour un nouveau monde</span>
                             <h2 class="title">
-                                Let’s Make
-                                <span>Some Change</span>
+                                Faisons du 
+                                <span>changement</span>
                             </h2>
                             <div class="desc">
                                 <p>

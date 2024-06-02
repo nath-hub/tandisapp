@@ -158,7 +158,7 @@
                             @endif
                             <a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Telecharger le
                                 Contrat</a>
-                         
+
                         </table>
                     </div>
                 </div>
@@ -170,7 +170,22 @@
                             <div class="gy-3">
                                 <table class="table caption-top">
                                     <caption>Informations de l'entreprise</caption>
+                                    @if (
+                                        $enterprise->commercial_register === null ||
+                                            $enterprise->livres === null ||
+                                            $enterprise->politique === null ||
+                                            $enterprise->siren === null)
+                                        <div class="alert alert-danger">
+                                            {{ __('Soumettez votre startup au financement!') }}
+                                        </div>
+                                    @else
+                                        @if ($enterprise->state === 'INACTIF')
+                                            <div class="alert alert-success">
+                                                {{ __('Votre projet est en attente de validation!') }}
+                                            </div>
+                                        @endif
 
+                                    @endif
                                     <tbody>
                                         <tr>
                                             <th scope="row">Siren : </th>
@@ -212,7 +227,7 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">web_site: </th>
-                                            <td> <a class="btn btn-link" href="{{ $enterprise->web_site }}">
+                                            <td> <a class="btn btn-link" href="https://{{ $enterprise->web_site }}">
                                                     Visiter le site</a> </td>
                                         </tr>
                                         <tr>
@@ -378,9 +393,9 @@
                                                 <td><a class="btn btn-outline-warning"
                                                         href="{{ asset($user->type) }}">Lire le
                                                         PDF</a></td>
-                                                        <td><a class="btn btn-outline-warning"
-                                                            href="{{ asset($user->type) }}">Lire le
-                                                            PDF</a></td>
+                                                <td><a class="btn btn-outline-warning"
+                                                        href="{{ asset($user->type) }}">Lire le
+                                                        PDF</a></td>
                                             </tr>
                                         @endforeach
                                     @else
@@ -401,7 +416,22 @@
                             <div class="gy-3">
                                 <table class="table caption-top">
                                     <caption>Informations de l'entreprise</caption>
+                                    @if (
+                                        $enterprise->commercial_register === null ||
+                                            $enterprise->livres === null ||
+                                            $enterprise->politique === null ||
+                                            $enterprise->siren === null)
+                                        <div class="alert alert-danger">
+                                            {{ __('Soumettez votre startup au financement!') }}
+                                        </div>
+                                    @else
+                                        @if ($enterprise->state === 'INACTIF')
+                                            <div class="alert alert-success">
+                                                {{ __('Votre projet est en attente de validation!') }}
+                                            </div>
+                                        @endif
 
+                                    @endif
                                     <tbody>
                                         <tr>
                                             <th scope="row">Siren : </th>
@@ -443,7 +473,7 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">web_site: </th>
-                                            <td> <a class="btn btn-link" href="{{ $enterprise->web_site }}">
+                                            <td> <a class="btn btn-link" href="https://{{ $enterprise->web_site }}">
                                                     Visiter le site</a> </td>
                                         </tr>
                                         <tr>

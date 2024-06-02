@@ -113,7 +113,7 @@
                                             <td>
                                                 <div class="col-12">
                                                     <div class="form-group border " style="border-radius: 10px;">
-                                                        <input type="number" placeholder="prix d'une action"
+                                                        <input type="number" placeholder="nombre d'action"
                                                             class="form-control" name="nombre_action"
                                                             aria-describedby="nombre_actionHelp">
                                                         @if ($errors->has('nombre_action'))
@@ -225,7 +225,7 @@
     <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-6 p-3 float-right">
-            <a class="btn btn-success" href="/"> retour </a>
+            <a class="btn btn-success" href="/public/home"> retour </a>
         </div>
     </div>
     @include('layouts.footer')

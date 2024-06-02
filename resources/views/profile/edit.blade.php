@@ -187,7 +187,7 @@
                     <div class="col-md-6 p-3 float-right">
                         <button type="submit" class="btn btn-success"> Enregistrer</button>
                     </div>
-                    <a class="btn btn-warning" href="/home">
+                    <a class="btn btn-warning" href="/public/home">
                         <i class="fas fa-arrow-left"></i> Retour</a>
                 </div>
             </form>
@@ -393,7 +393,7 @@
                         <div class="col-md-6"></div>
                         <div class="col-md-6 p-3 float-right">
                             <button type="submit" class="btn btn-success"> Enregistrer</button>
-                            <a class="btn btn-warning" href="/home">
+                            <a class="btn btn-warning" href="/public/home">
                                 <i class="fas fa-arrow-left"></i> Retour</a>
                         </div>
                     </div>

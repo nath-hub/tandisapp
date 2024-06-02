@@ -55,7 +55,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">web_site: </th>
-                                <td> <a class="btn btn-link" href="{{ $enterprises->web_site }}">
+                                <td> <a class="btn btn-link" href="https://{{ $enterprises->web_site }}">
                                         Visiter le site</a> </td>
                             </tr>
                             <tr>
