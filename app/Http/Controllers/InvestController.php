@@ -25,16 +25,7 @@ use Nette\Utils\Random;
 
 class InvestController extends Controller
 {
-
-    public function __construct(
-        $orientation = 'P',
-        $format = 'A4',
-        $lang = 'fr',
-        $unicode = true,
-        $encoding = 'UTF-8',
-        $margins = array(5, 5, 5, 8),
-        $pdfa = false
-    ) { }
+ 
 
     public function index()
     {
@@ -96,57 +87,55 @@ class InvestController extends Controller
 
         Cache::add('data', $data);
 
-        // $data = array(
-        //     'amount' => $request->total_payer,
-        //     'currency_code' => $currentUserInfo->currencyCode,
-        //     'ccode' => $currentUserInfo->countryCode,
-        //     'lang' => 'fr',
-        //     'item_ref' => 'JEIMMDKSLSNKJD1',
-        //     'item_name' => "Achat d'action",
-        //     'email' => $user->email,
-        //     'phone' => $user->phone,
-        //     'first_name' => $user->name,
-        //     'public_key' => 'PK_K7TagYkeP3pACYC8vaJ8',
-        //     'logo' => 'https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im9.png'
-        // );
+        $data = array(
+            'amount' => $request->total_payer,
+            'currency_code' => $currentUserInfo->currencyCode,
+            'ccode' => $currentUserInfo->countryCode,
+            'lang' => 'fr',
+            'item_ref' => 'JEIMMDKSLSNKJD1',
+            'item_name' => "Achat d'action",
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'first_name' => $user->name,
+            'public_key' => 'PK_K7TagYkeP3pACYC8vaJ8',
+            'logo' => 'https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im9.png'
+        );
 
-        // $curl = curl_init();
+        $curl = curl_init();
 
-        // curl_setopt_array(
-        //     $curl,
-        //     array(
-        //         CURLOPT_URL => 'https://www.paymooney.com/api/v1.0/payment_url',
-        //         CURLOPT_RETURNTRANSFER => true,
-        //         CURLOPT_ENCODING => "",
-        //         CURLOPT_MAXREDIRS => 10,
-        //         CURLOPT_TIMEOUT => 0,
-        //         CURLOPT_FOLLOWLOCATION => true,
-        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //         CURLOPT_CUSTOMREQUEST => "POST",
-        //         CURLOPT_HTTPHEADER => array("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
-        //         CURLOPT_POSTFIELDS => $data,
-        //     )
-        // );
+        curl_setopt_array(
+            $curl,
+            array(
+                CURLOPT_URL => 'https://www.paymooney.com/api/v1.0/payment_url',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_HTTPHEADER => array("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
+                CURLOPT_POSTFIELDS => $data,
+            )
+        );
 
-        // $response = curl_exec($curl);
+        $response = curl_exec($curl);
 
-        // curl_close($curl);
+        curl_close($curl);
 
-        // $rep = json_decode($response);
+        $rep = json_decode($response);
 
-        // if ($rep->response == "success") {
+        if ($rep->response == "success") {
 
-        // return redirect($rep->payment_url);
+        return redirect($rep->payment_url);
 
-        // } else {
-        //     return redirect()->route('home.projet')->with([
-        //         'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
-        //     ]);
-        // }
+        } else {
+            return redirect()->route('home.projet')->with([
+                'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
+            ]);
+        }
 
-        return view('invest.succes', [
-            'user' => $user
-        ]);
+        
     }
 
     public function succes()
@@ -183,6 +172,7 @@ class InvestController extends Controller
         $names = 'contrat' . $user->id;
 
         $contrat->save(storage_path('app/public/contrat/' . $names . '.pdf'));
+
         $contratPath = ('contrat/' . $names . '.pdf');
 
         // $content = $pdf->download($name)->getOriginalContent();
@@ -207,13 +197,13 @@ class InvestController extends Controller
             'prix_action' => $data->prix_action,
             'nombre_action' => $data->nombre_action,
             "total_payer" => $data->total_payer,
-            // 'recu' => $storagePath,
-            // 'contrat' => $contratPath,
+            'recu' => $storagePath,
+            'contrat' => $contratPath,
             "phase_id" => $data->phases_id,
             'created_at' => $data->created_at,
         ]);
 
-        // Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
+        Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
 
         return view('invest.succes', [
             'success' => "Felicitations, vous vennez d'acheter des actions !!!!!!!!!",
@@ -235,6 +225,5 @@ class InvestController extends Controller
         $pdf = PDF::loadView('contrat');
         $pdf->save(storage_path('app/public/facture.pdf'));
          
-
     }
 }
