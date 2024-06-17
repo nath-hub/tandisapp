@@ -137,7 +137,7 @@
                                     <th scope="col-2">Recu</th>
                                 </tr>
                             </thead>
-
+                            
                             @if (isset($invest))
                                 @foreach ($invest as $investment)
                                     <tr>
@@ -147,7 +147,7 @@
                                         <td>{{ $investment->nombre_action }}</td>
                                         <td>{{ $investment->created_at }}</td>
                                         <td>{{ $investment->statut_phase }}</td>
-                                        <td><a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Lire le
+                                        <td><a class="btn btn-outline-warning" href="{{ asset('storage/' . $investment->recu) }}">Lire le
                                                 PDF</a></td>
                                     </tr>
                                 @endforeach
@@ -156,7 +156,7 @@
                                     <td colspan="7" class="text-center">Aucun investissement trouvé</td>
                                 </tr>
                             @endif
-                            <a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Telecharger le
+                            <a class="btn btn-outline-warning" href="{{ asset('storage/' . $investment->contrat) }}">Telecharger le
                                 Contrat</a>
 
                         </table>

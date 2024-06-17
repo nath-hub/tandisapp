@@ -93,4 +93,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('generate', [InvestController::class, 'succes']);
         Route::get('view-pdf', [ InvestController::class, 'viewPDF']);
         });
-});
+});     
+
+Route::get('pdf', [InvestController::class, 'pdf']);

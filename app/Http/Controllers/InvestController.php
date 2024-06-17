@@ -17,6 +17,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Cache;
 use stdClass;
 use Illuminate\Support\Facades\Mail;
+use Spipu\Html2Pdf\Html2Pdf;
 
 
 use Illuminate\Support\Facades\Storage;
@@ -24,6 +25,17 @@ use Nette\Utils\Random;
 
 class InvestController extends Controller
 {
+
+    public function __construct(
+        $orientation = 'P',
+        $format = 'A4',
+        $lang = 'fr',
+        $unicode = true,
+        $encoding = 'UTF-8',
+        $margins = array(5, 5, 5, 8),
+        $pdfa = false
+    ) { }
+
     public function index()
     {
         // $id = auth()->user()->id;
@@ -38,22 +50,20 @@ class InvestController extends Controller
     public function create($enterprise)
     {
 
-        if(auth()->user()->cnirecto !== null && auth()->user()->cniverso!== null){
+        if (auth()->user()->cnirecto !== null && auth()->user()->cniverso !== null) {
 
-        $enterprise = Enterprise::where('id', $enterprise)->first();
+            $enterprise = Enterprise::where('id', $enterprise)->first();
 
-        $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
+            $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
 
-        $user = auth()->user();
+            $user = auth()->user();
 
-        return view('invest.create', compact('user', 'enterprise', 'phase'));
-
-        }else{
+            return view('invest.create', compact('user', 'enterprise', 'phase'));
+        } else {
             $enterprises = Enterprise::all();
             return redirect()->route('home.projet', compact('enterprises'))
                 ->with("error", "Veuillez remplir toutes vos informations personnel avant d'investir, surtout une copie de votre cni");
-              }
-
+        }
     }
 
     public function store(Request $request, $enterprise)
@@ -86,54 +96,57 @@ class InvestController extends Controller
 
         Cache::add('data', $data);
 
-        $data = array(
-            'amount' => $request->total_payer,
-            'currency_code' => $currentUserInfo->currencyCode,
-            'ccode' => $currentUserInfo->countryCode,
-            'lang' => 'fr',
-            'item_ref' => 'JEIMMDKSLSNKJD1',
-            'item_name' => "Achat d'action",
-            'email' => $user->email,
-            'phone' => $user->phone,
-            'first_name' => $user->name,
-            'public_key' => 'PK_K7TagYkeP3pACYC8vaJ8',
-            'logo' => 'https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im9.png'
-        );
+        // $data = array(
+        //     'amount' => $request->total_payer,
+        //     'currency_code' => $currentUserInfo->currencyCode,
+        //     'ccode' => $currentUserInfo->countryCode,
+        //     'lang' => 'fr',
+        //     'item_ref' => 'JEIMMDKSLSNKJD1',
+        //     'item_name' => "Achat d'action",
+        //     'email' => $user->email,
+        //     'phone' => $user->phone,
+        //     'first_name' => $user->name,
+        //     'public_key' => 'PK_K7TagYkeP3pACYC8vaJ8',
+        //     'logo' => 'https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im9.png'
+        // );
 
-        $curl = curl_init();
+        // $curl = curl_init();
 
-        curl_setopt_array(
-            $curl,
-            array(
-                CURLOPT_URL => 'https://www.paymooney.com/api/v1.0/payment_url',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_HTTPHEADER => array("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
-                CURLOPT_POSTFIELDS => $data,
-            )
-        );
+        // curl_setopt_array(
+        //     $curl,
+        //     array(
+        //         CURLOPT_URL => 'https://www.paymooney.com/api/v1.0/payment_url',
+        //         CURLOPT_RETURNTRANSFER => true,
+        //         CURLOPT_ENCODING => "",
+        //         CURLOPT_MAXREDIRS => 10,
+        //         CURLOPT_TIMEOUT => 0,
+        //         CURLOPT_FOLLOWLOCATION => true,
+        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //         CURLOPT_CUSTOMREQUEST => "POST",
+        //         CURLOPT_HTTPHEADER => array("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
+        //         CURLOPT_POSTFIELDS => $data,
+        //     )
+        // );
 
-        $response = curl_exec($curl);
+        // $response = curl_exec($curl);
 
-        curl_close($curl);
+        // curl_close($curl);
 
-        $rep = json_decode($response);
+        // $rep = json_decode($response);
 
-        if ($rep->response == "success") {
+        // if ($rep->response == "success") {
 
-            return redirect($rep->payment_url);
+        // return redirect($rep->payment_url);
 
-        } else {
-            return redirect()->route('home.projet')->with([
-                'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
-            ]);
-        }
+        // } else {
+        //     return redirect()->route('home.projet')->with([
+        //         'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
+        //     ]);
+        // }
 
+        return view('invest.succes', [
+            'user' => $user
+        ]);
     }
 
     public function succes()
@@ -156,38 +169,51 @@ class InvestController extends Controller
         $enterprise = Enterprise::where('id', $data->enterprise_id)->first();
 
         $pdf = PDF::loadView('facture', compact('data', 'enterprise', 'user'))->setOptions(['isHtml5ParserEnabled' => true]);
-
-        $contrat = PDF::loadView('contrat', compact('data', 'enterprise', 'user'))->setOptions(['isHtml5ParserEnabled' => true]);
         
+        $contrat = PDF::loadView('contrat', compact('data', 'enterprise', 'user'));
+        
+
         $num = mt_rand(100000, 999999);
 
         $name = "facture-" . $num;
 
+        $pdf->save(storage_path('app/public/recu/' . $name . '.pdf'));
+        $storagePath = ('contrat/' . $name . '.pdf');
+
         $names = 'contrat' . $user->id;
 
-        $content = $pdf->download($name)->getOriginalContent();
+        $contrat->save(storage_path('app/public/contrat/' . $names . '.pdf'));
+        $contratPath = ('contrat/' . $names . '.pdf');
 
-        $contentContrat = $contrat->download($names)->getOriginalContent();
+        // $content = $pdf->download($name)->getOriginalContent();
 
-        Storage::put('public/recu/' . $name . '.pdf', $content);
+        // $contentContrat = $contrat->download($names)->getOriginalContent();
 
-        Storage::put('public/recu/' . $names . '.pdf', $contentContrat);
+        // Storage::put('public/recu/' . $name . '.pdf', $content);
 
-        $storagePath = storage_path('app/public/recu/' . $name . '.pdf');
+        // Storage::put('public/contrat/' . $names . '.pdf', $contentContrat);
 
-        $contratPath = storage_path('app/public/recu/' . $names . '.pdf');
+        // $storagePath = ('recu/' . $name . '.pdf');
+
+        
+
+        // $contratPath = ('contrat/' . $names . '.pdf');
+
+        
+
+        // dd($storagePath, $contratPath);
 
         $enterprise->investisseurs()->attach($user, [
             'prix_action' => $data->prix_action,
             'nombre_action' => $data->nombre_action,
             "total_payer" => $data->total_payer,
-            'recu' => $storagePath,
-            'contrat' => $contratPath,
+            // 'recu' => $storagePath,
+            // 'contrat' => $contratPath,
             "phase_id" => $data->phases_id,
             'created_at' => $data->created_at,
         ]);
 
-        Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
+        // Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
 
         return view('invest.succes', [
             'success' => "Felicitations, vous vennez d'acheter des actions !!!!!!!!!",
@@ -195,7 +221,6 @@ class InvestController extends Controller
             'enterprise' => $enterprise,
             'user' => $user
         ]);
-
     }
 
     public function cancel()
@@ -205,5 +230,11 @@ class InvestController extends Controller
         ]);
     }
 
-   
+    public function pdf()
+    {
+        $pdf = PDF::loadView('contrat');
+        $pdf->save(storage_path('app/public/facture.pdf'));
+         
+
+    }
 }

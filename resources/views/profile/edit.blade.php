@@ -161,25 +161,6 @@
                                 </div>
                             </td>
                         </li>
-                        <li class="list-group-item">
-                            <th scope="row">Type de compte : </th>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="inputGroupSelect01">Type
-                                        de compte : </label>
-                                    <select class="form-select" name="type" id="inputGroupSelect01">
-                                        <option value="{{ old('type') ?? auth()->user()->type }}" selected>
-                                            Choissisez...
-                                        </option>
-                                        <option value="ENTERPRISE">Entreprise</option>
-                                        <option value="INVEST">Investisseur</option>
-                                    </select>
-                                    @if ($errors->has('type'))
-                                        <span class="text-danger text-left">{{ $errors->first('type') }}</span>
-                                    @endif
-                                </div>
-                            </td>
-                        </li>
                     </ul>
                 </div>
                 <div class="row">
@@ -360,27 +341,6 @@
                                                             class="text-danger text-left">{{ $errors->first('birth_date') }}</span>
                                                     @endif
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">Type de compte : </th>
-                                        <td>
-                                            <div class="input-group mb-3">
-                                                <label class="input-group-text" for="inputGroupSelect01">Type
-                                                    de compte : </label>
-                                                <select class="form-select" name="type" id="inputGroupSelect01">
-                                                    <option value="{{ old('type') ?? auth()->user()->type }}"
-                                                        selected>Choissisez...
-                                                    </option>
-                                                    <option value="ENTERPRISE">Entreprise</option>
-                                                    <option value="INVEST">Investisseur</option>
-                                                </select>
-                                                @if ($errors->has('type'))
-                                                    <span
-                                                        class="text-danger text-left">{{ $errors->first('type') }}</span>
-                                                @endif
                                             </div>
                                         </td>
                                     </tr>

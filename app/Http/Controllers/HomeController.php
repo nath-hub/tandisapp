@@ -17,7 +17,7 @@ class Action {
     public $phase;
     public $statut_phase;
     public $recu; 
-
+    public $contrat; 
     public $created_at;
 
 }
@@ -62,6 +62,8 @@ class HomeController extends Controller
                 $action->prix_action = $actionData["prix_action"];
                 $action->created_at = $actionData["created_at"];
                 $action->nombre_action = $actionData["nombre_action"];
+                $action->recu = $actionData["recu"];
+                $action->contrat = $actionData["contrat"];
 
                 $enterprise = Enterprise::where('id', $actionData->enterprise_id)->first();
                 $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
@@ -79,7 +81,7 @@ class HomeController extends Controller
         }
         $data->actions = $actionObjects;
         $actions = $data->actions;
-        
+  
         $monEntreprise = Enterprise::where('user_id', $user->id)->first();
 
         // dd($data, $invests, $actions);

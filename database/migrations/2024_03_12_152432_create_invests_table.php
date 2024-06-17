@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string("recu")->nullable();
             $table->string("contrat")->nullable();
 
-            $table->index(["enterprise_id"], "fk_enterprise_user");
-            $table->index(["user_id"], "fk_user_enterprise");
+            $table->index(["enterprise_id"], "fk_enterprise_users");
+            $table->index(["user_id"], "fk_user_enterprises");
             $table->index(["phase_id"], "fk_phase_invest");
 
             $table->foreign('enterprise_id')->references('id')->on('enterprises');

@@ -224,12 +224,10 @@ body {
         <div class="invoice-information">
           <p><b>Invoice</b> : #LL93784</p>
           <p><b>Created Date </b>: {{$data->created_at}}</p> 
-        </div>
-        <!-- logo brand invoice -->
-        {{-- <div class="invoice-logo-brand">
-          <!-- <h2>Tampsh.</h2> -->
-          <img src={{$data->image}} alt="" />
-        </div> --}}
+        </div> 
+          <div class="invoice-logo-brand"> 
+          <img src="https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im2.png" alt="Image gauche" class="image" />
+        </div>  
         <!-- invoice head -->
         <div class="invoice-head">
           <div class="head client-info">
