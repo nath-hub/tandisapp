@@ -156,7 +156,7 @@
                                     <td colspan="7" class="text-center">Aucun investissement trouvé</td>
                                 </tr>
                             @endif
-                            <a class="btn btn-outline-warning" href="{{ asset('storage/' . $investment->contrat) }}">Telecharger le
+                            <a class="btn btn-outline-warning" href="{{ asset('storage/' . $contrat) }}">Telecharger le
                                 Contrat</a>
 
                         </table>
@@ -401,8 +401,8 @@
                                     @else
                                         <p>Vous n'avez pas encore investis !!!</p>
                                     @endif
-                                    <a class="btn btn-outline-warning" href="{{ asset($user->type) }}">Telecharger le
-                                        Contrat</a>
+                                    <a class="btn btn-outline-warning" href="{{ asset('storage/' . $contrat) }}">Telecharger le
+                                    Contrat</a>
                                 </table>
                             </div>
                         </div>

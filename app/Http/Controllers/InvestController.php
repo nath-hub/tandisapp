@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Cache;
 use stdClass;
 use Illuminate\Support\Facades\Mail;
 use Spipu\Html2Pdf\Html2Pdf;
+use Illuminate\Support\Str;
 
 
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ use Nette\Utils\Random;
 
 class InvestController extends Controller
 {
- 
+
 
     public function index()
     {
@@ -85,6 +86,8 @@ class InvestController extends Controller
         $data->phases_id = $phases;
         $data->created_at = Carbon::now();
 
+        $random = Str::upper(Str::random(15));
+
         Cache::add('data', $data);
 
         $data = array(
@@ -92,7 +95,7 @@ class InvestController extends Controller
             'currency_code' => $currentUserInfo->currencyCode,
             'ccode' => $currentUserInfo->countryCode,
             'lang' => 'fr',
-            'item_ref' => 'JEIMMDKSLSNKJD1',
+            'item_ref' => $random,
             'item_name' => "Achat d'action",
             'email' => $user->email,
             'phone' => $user->phone,
@@ -121,21 +124,20 @@ class InvestController extends Controller
 
         $response = curl_exec($curl);
 
+        dd($response);
+
         curl_close($curl);
 
         $rep = json_decode($response);
 
         if ($rep->response == "success") {
 
-        return redirect($rep->payment_url);
-
+            return redirect($rep->payment_url);
         } else {
             return redirect()->route('home.projet')->with([
                 'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
             ]);
         }
-
-        
     }
 
     public function succes()
@@ -143,6 +145,19 @@ class InvestController extends Controller
 
         $user = auth()->user();
 
+        $invests = Invest::where('user_id', $user->id)->get();
+
+        $action = new stdClass();
+        $action->nombre_action = 0;
+        $action->prix_action = 0;
+        $action->total_payer = 0;
+        
+        foreach ($invests as $invest) {
+            $action->nombre_action += $invest->nombre_action;
+            $action->prix_action = $invest->prix_action;
+            $action->total_payer += $invest->total_payer;
+        }
+           
         $data = Cache::get('data');
 
         $data->sous_total = $data->total_payer;
@@ -158,15 +173,16 @@ class InvestController extends Controller
         $enterprise = Enterprise::where('id', $data->enterprise_id)->first();
 
         $pdf = PDF::loadView('facture', compact('data', 'enterprise', 'user'))->setOptions(['isHtml5ParserEnabled' => true]);
-        
-        $contrat = PDF::loadView('contrat', compact('data', 'enterprise', 'user'));
-        
+
+        $contrat = PDF::loadView('contrat', compact('data','action' , 'enterprise', 'user'));
+
 
         $num = mt_rand(100000, 999999);
 
         $name = "facture-" . $num;
 
         $pdf->save(storage_path('app/public/recu/' . $name . '.pdf'));
+
         $storagePath = ('contrat/' . $name . '.pdf');
 
         $names = 'contrat' . $user->id;
@@ -185,11 +201,14 @@ class InvestController extends Controller
 
         // $storagePath = ('recu/' . $name . '.pdf');
 
-        
+
 
         // $contratPath = ('contrat/' . $names . '.pdf');
 
-        
+
+        $record = Enterprise::find($enterprise->id);
+        $record->montant_actuel =  $enterprise->montant_actuel + $data->sous_total;
+        $record->save();
 
         // dd($storagePath, $contratPath);
 
@@ -200,10 +219,20 @@ class InvestController extends Controller
             'recu' => $storagePath,
             'contrat' => $contratPath,
             "phase_id" => $data->phases_id,
-            'created_at' => $data->created_at,
+            'created_at' => Carbon::now(),
         ]);
 
-        Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
+        // Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
+        $datas = [
+            'to' => $user->email,
+            'subject' => 'Facture de paiement',
+        ];
+        // dd($datas, $contratPath, $user->email);
+        // Mail::send('mail', $datas, function ($message) use ($datas, $contratPath, $user) {
+        //     $message->to($datas['to'])
+        //         ->subject($datas['subject']);
+        //     // ->attach(Storage::path($contratPath));
+        // });
 
         return view('invest.succes', [
             'success' => "Felicitations, vous vennez d'acheter des actions !!!!!!!!!",
@@ -224,6 +253,5 @@ class InvestController extends Controller
     {
         $pdf = PDF::loadView('contrat');
         $pdf->save(storage_path('app/public/facture.pdf'));
-         
     }
 }

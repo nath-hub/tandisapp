@@ -64,8 +64,7 @@
                             <img src="assets/images/b5.jpeg" alt="Image" />
                             <div class="about-circle">
                                 <div class="video-play">
-                                    <a class="venobox popup-videos-button" data-autoplay="true" data-vbtype="video"
-                                        href="https://www.youtube.com/watch?v=ADmQTw4qqTY">
+                                    <a class="venobox popup-videos-button" data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=ADmQTw4qqTY">
                                         <i class="fa-solid fa-play"></i>
                                         <svg class="shape-1" viewBox="0 0 100 100" width="150" height="100">
                                             <defs>
@@ -113,8 +112,7 @@
         <div class="shadow-lg mb-5 bg-body rounded row align-items-center">
             <div class="card col-4 py-3 m-5" style="width: 18rem;">
                 <a class="" href="{{ route('register') }}">
-                    <img src="{{ asset('assets/images/i4.png') }}" style="width : 7vw; height : 15vh;"
-                        class="card-img-top rounded  float-center" alt="...">
+                    <img src="{{ asset('assets/images/i4.png') }}" style="width : 7vw; height : 15vh;" class="card-img-top rounded  float-center" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">CRÉER VOTRE COMPTE</h5>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -126,8 +124,7 @@
 
             <div class="card col-4 py-3 m-5" style="width: 18rem;">
                 <a href="{{ route('login') }}">
-                    <img src="{{ asset('assets/images/i2.png') }}" style="width : 7vw; height : 15vh;"
-                        class="card-img-top rounded mx-auto" alt="...">
+                    <img src="{{ asset('assets/images/i2.png') }}" style="width : 7vw; height : 15vh;" class="card-img-top rounded mx-auto" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">CONNECTEZ-VOUS</h5>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -138,8 +135,7 @@
 
             <div class="card col-4 py-3 m-5" style="width: 250px;">
                 <a href="{{ route('home.projet') }}">
-                    <img src="{{ asset('assets/images/i5.jpg') }}" style="width : 10vw; height : 17vh;"
-                        class="card-img-top rounded mx-auto" alt="...">
+                    <img src="{{ asset('assets/images/i5.jpg') }}" style="width : 10vw; height : 17vh;" class="card-img-top rounded mx-auto" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">INVESTISSEZ</h5>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -149,7 +145,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container d-block d-sm-none">
         <div class="row">
             <div class="col-lg-12">
@@ -165,8 +161,7 @@
         <div class="shadow-lg mb-5 rounded row align-items-center">
             <div class="card col-4 py-3 m-5" style="width: 300px;">
                 <a class="" href="{{ route('register') }}">
-                    <img src="{{ asset('assets/images/i4.png') }}" style="width : 30vw; height : 17vh;"
-                        class="card-img-top rounded  float-center" alt="...">
+                    <img src="{{ asset('assets/images/i4.png') }}" style="width : 30vw; height : 17vh;" class="card-img-top rounded  float-center" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">CRÉER VOTRE COMPTE</h5>
                         <p class="card-text">Entrez vos informations afin de beneficier des services de TANDIS INVEST
@@ -178,8 +173,7 @@
 
             <div class="card col-4 py-3 m-5" style="width: 300px;">
                 <a href="{{ route('login') }}">
-                    <img src="{{ asset('assets/images/i2.png') }}" style="width : 30vw; height : 17vh;"
-                        class="card-img-top rounded mx-auto" alt="...">
+                    <img src="{{ asset('assets/images/i2.png') }}" style="width : 30vw; height : 17vh;" class="card-img-top rounded mx-auto" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">CONNECTEZ-VOUS</h5>
                         <p class="card-text">Après votre enregistrement connectez-vous sur votre tableau de bord </p>
@@ -190,8 +184,7 @@
 
             <div class="card col-4 py-3 m-5" style="width: 300px;">
                 <a href="{{ route('home.projet') }}">
-                    <img src="{{ asset('assets/images/i5.jpg') }}" style="width : 30vw; height : 17vh;"
-                        class="card-img-top rounded mx-auto" alt="...">
+                    <img src="{{ asset('assets/images/i5.jpg') }}" style="width : 30vw; height : 17vh;" class="card-img-top rounded mx-auto" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">INVESTISSEZ</h5>
                         <p class="card-text">Achetez des actions dans les entreprises</p>
@@ -225,36 +218,41 @@
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach ($enterprises as $enterprise)
-                    <div class="col">
+                <div class="col">
 
-                        <div class="card h-100 text-center">
-                            <img src="{{ asset('storage/'.$enterprise->image) }}" class="d-block mx-auto w-50"
-                            style="width: 400px; height: 200px;" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $enterprise->name_enterprise }}</h5>
-                                <p class="sec-title">Objectif : {{ $enterprise->objectif }}</p>
-                                <p class="card-text text-success">Montant actuel: {{ $enterprise->montant_actuel }}
-                                </p>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{$enterprise->progress}};">{{$enterprise->bar}}%</div>
-                                  </div>
-                                <div class="card-footer">
-                                    <div class="clearfix">
-                                        <a href="{{ route('invest.create', ['enterprise' => $enterprise->id]) }}"
-                                            class="btn btn-success btn-lg float-start btn-block">Investir</a>
-                                        <a href="{{ route('enterprise.show', ['enterprise' => $enterprise->id]) }}"
-                                            class="btn btn-warning btn-lg btn-block float-end">Details</a>
-                                    </div>
+                    <div class="card h-100 text-center">
+                        <img src="{{ asset('storage/'.$enterprise->image) }}" class="d-block mx-auto w-50" style="width: 400px; height: 200px;" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $enterprise->name_enterprise }}</h5>
+                            <p class="sec-title">Objectif : {{ $enterprise->objectif }}</p>
+                            <p class="card-text text-success">Montant actuel: {{ $enterprise->montant_actuel }}
+                            </p>
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-9">
+                                    <a href="#" class="btn btn-success btn-lg float-start btn-block"> <div id="countdown">{{$date}}</div></a>
                                 </div>
+                            </div>
 
 
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{$enterprise->progress}};">{{$enterprise->bar}}%</div>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">Modifier il y'a {{ $enterprise->date }}</small>
+                                <div class="clearfix">
+                                    <a href="{{ route('invest.create', ['enterprise' => $enterprise->id]) }}" class="btn btn-success btn-lg float-start btn-block">Investir</a>
+                                    <a href="{{ route('enterprise.show', ['enterprise' => $enterprise->id]) }}" class="btn btn-warning btn-lg btn-block float-end">Details</a>
+                                </div>
                             </div>
-                        </div>
 
+
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Modifier il y'a {{ $enterprise->date }}</small>
+                        </div>
                     </div>
+
+                </div>
                 @endforeach
             </div>
 
@@ -300,8 +298,7 @@
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="counter-wrapper">
-                        <img src="{{ asset('assets/images/b6.jpeg') }}" class="img-fluid max-width: 200px;"
-                            alt="Image" />
+                        <img src="{{ asset('assets/images/b6.jpeg') }}" class="img-fluid max-width: 200px;" alt="Image" />
                     </div>
                 </div>
             </div>
@@ -317,7 +314,7 @@
                     <div class="tj-sec-heading text-center">
                         <span class="sub-title">L'acte OHADA prevoit :</span>
                         <h2 class="sec-title">
-                           en 2014 <br />
+                            en 2014 <br />
                             <span></span>
                         </h2>
                     </div>
@@ -333,8 +330,8 @@
                                 <i class="flaticon-renewable-energy"></i>
                             </div>
                             <div class="process-title">
-                                <h5 class="title">50 000 000 XAF</h5> 
-                                <strong class="text-bg-success">La valeur maximale de levée de fond</strong>  
+                                <h5 class="title">50 000 000 XAF</h5>
+                                <strong class="text-bg-success">La valeur maximale de levée de fond</strong>
                             </div>
                         </div>
                     </div>
@@ -347,8 +344,8 @@
                                 <i class="flaticon-quality"></i>
                             </div>
                             <div class="process-title">
-                                <h5 class="title">10 000 XAF</h5> 
-                                <strong class="text-bg-success">La Valeur de la part</strong>  
+                                <h5 class="title">10 000 XAF</h5>
+                                <strong class="text-bg-success">La Valeur de la part</strong>
                             </div>
                         </div>
                     </div>
@@ -362,7 +359,7 @@
                             </div>
                             <div class="process-title">
                                 <h5 class="title">1 An</h5>
-                                <strong class="text-bg-success">Temps de levée de fonds maximal</strong>  
+                                <strong class="text-bg-success">Temps de levée de fonds maximal</strong>
                             </div>
                         </div>
                     </div>
@@ -566,8 +563,7 @@
                                     </div>
                                     <div class="testimonial-auother">
                                         <div class="auother-image">
-                                            <img src="{{ asset('assets/images/testimonial/te1.jpg') }}"
-                                                alt="Image" />
+                                            <img src="{{ asset('assets/images/testimonial/te1.jpg') }}" alt="Image" />
                                         </div>
                                         <div class="auother-header">
                                             <h5 class="title">
@@ -591,8 +587,7 @@
                                     </div>
                                     <div class="testimonial-auother">
                                         <div class="auother-image">
-                                            <img src="{{ asset('assets/images/testimonial/te2.jpg') }}"
-                                                alt="Image" />
+                                            <img src="{{ asset('assets/images/testimonial/te2.jpg') }}" alt="Image" />
                                         </div>
                                         <div class="auother-header">
                                             <h5 class="title">
@@ -617,8 +612,7 @@
                                     </div>
                                     <div class="testimonial-auother">
                                         <div class="auother-image">
-                                            <img src="{{ asset('assets/images/testimonial/te3.jpg') }}"
-                                                alt="Image" />
+                                            <img src="{{ asset('assets/images/testimonial/te3.jpg') }}" alt="Image" />
                                         </div>
                                         <div class="auother-header">
                                             <h5 class="title">
@@ -858,85 +852,114 @@
                         <div class="tj-blog-item">
                             <div class="blog-image">
                                 <a href="blog-details.html"><img src="{{asset('assets/images/blog/blog-1.jpg')}}" alt="Image" /></a>
-                            </div>
-                            <div class="blog-text-area">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li><i class="flaticon-calendar"></i> Dec 1, 2023</li>
-                                        <li><i class="flaticon-chat"></i> Comment (1)</li>
-                                    </ul>
-                                </div>
-                                <div class="blog-content">
-                                    <h5 class="title">
-                                        <a href="blog-details.html">Winds of Change in the Tubine Service Industry</a>
-                                    </h5>
-                                    <div class="tj-blog-button d-flex">
-                                        <a class="tj-secondary-btn btn" href="blog-details.html">Read More <i
-                                                class="flaticon-right-arrow"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tj-blog-item">
-                            <div class="blog-image">
-                                <a href="blog-details.html"><img src="{{asset('assets/images/blog/blog-2.jpg')}}" alt="Image" /></a>
-                            </div>
-                            <div class="blog-text-area">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li><i class="flaticon-calendar"></i> May 7, 2023</li>
-                                        <li><i class="flaticon-chat"></i> Comment (1)</li>
-                                    </ul>
-                                </div>
-                                <div class="blog-content">
-                                    <h5 class="title">
-                                        <a href="blog-details.html">Saw Scond Earth Do Grass Very Hot Wathers</a>
-                                    </h5>
-                                    <div class="tj-blog-button d-flex">
-                                        <a class="tj-secondary-btn btn" href="blog-details.html">Read More <i
-                                                class="flaticon-right-arrow"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tj-blog-item">
-                            <div class="blog-image">
-                                <a href="blog-details.html"><img src="{{asset('assets/images/blog/blog-3.jpg')}}" alt="Image" /></a>
-                            </div>
-                            <div class="blog-text-area">
-                                <div class="blog-meta">
-                                    <ul>
-                                        <li><i class="flaticon-calendar"></i> Jan 5, 2023</li>
-                                        <li><i class="flaticon-chat"></i> Comment (1)</li>
-                                    </ul>
-                                </div>
-                                <div class="blog-content">
-                                    <h5 class="title">
-                                        <a href="blog-details.html">Heaced Maece Nasera Tortor Convallis Dise Ann
-                                            Enget</a>
-                                    </h5>
-                                    <div class="tj-blog-button d-flex">
-                                        <a class="tj-secondary-btn btn" href="blog-details.html">Read More <i
-                                                class="flaticon-right-arrow"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    </div>
+    <div class="blog-text-area">
+        <div class="blog-meta">
+            <ul>
+                <li><i class="flaticon-calendar"></i> Dec 1, 2023</li>
+                <li><i class="flaticon-chat"></i> Comment (1)</li>
+            </ul>
+        </div>
+        <div class="blog-content">
+            <h5 class="title">
+                <a href="blog-details.html">Winds of Change in the Tubine Service Industry</a>
+            </h5>
+            <div class="tj-blog-button d-flex">
+                <a class="tj-secondary-btn btn" href="blog-details.html">Read More <i class="flaticon-right-arrow"></i></a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="tj-blog-item">
+            <div class="blog-image">
+                <a href="blog-details.html"><img src="{{asset('assets/images/blog/blog-2.jpg')}}" alt="Image" /></a>
+            </div>
+            <div class="blog-text-area">
+                <div class="blog-meta">
+                    <ul>
+                        <li><i class="flaticon-calendar"></i> May 7, 2023</li>
+                        <li><i class="flaticon-chat"></i> Comment (1)</li>
+                    </ul>
+                </div>
+                <div class="blog-content">
+                    <h5 class="title">
+                        <a href="blog-details.html">Saw Scond Earth Do Grass Very Hot Wathers</a>
+                    </h5>
+                    <div class="tj-blog-button d-flex">
+                        <a class="tj-secondary-btn btn" href="blog-details.html">Read More <i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="tj-blog-item">
+            <div class="blog-image">
+                <a href="blog-details.html"><img src="{{asset('assets/images/blog/blog-3.jpg')}}" alt="Image" /></a>
+            </div>
+            <div class="blog-text-area">
+                <div class="blog-meta">
+                    <ul>
+                        <li><i class="flaticon-calendar"></i> Jan 5, 2023</li>
+                        <li><i class="flaticon-chat"></i> Comment (1)</li>
+                    </ul>
+                </div>
+                <div class="blog-content">
+                    <h5 class="title">
+                        <a href="blog-details.html">Heaced Maece Nasera Tortor Convallis Dise Ann
+                            Enget</a>
+                    </h5>
+                    <div class="tj-blog-button d-flex">
+                        <a class="tj-secondary-btn btn" href="blog-details.html">Read More <i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section> --}}
     <!--=========== Blog Section End =========-->
 
     <script>
         const val1 = 10; // Remplacez par la valeur de votre variable
-const val2 = 5; // Remplacez par la valeur de votre variable
+        const val2 = 5; // Remplacez par la valeur de votre variable
 
-const resultat = (val1 / val2) * 100; 
+        const resultat = (val1 / val2) * 100;
+    </script>
+
+    <script>
+        var targetDate = "{{ $date }}";
+
+        function formatNumber(number) {
+            return number < 10 ? "0" + number : number;
+        }
+
+        function updateCountdown() {
+            var countdownElement = document.getElementById("countdown");
+            var currentDate = new Date();
+            var targetDateTime = new Date(targetDate).getTime();
+            var remainingTime = targetDateTime - currentDate.getTime();
+
+            var months = Math.floor(remainingTime / (1000 * 60 * 60 * 24 * 30));
+            var days = Math.floor((remainingTime % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = months + " mois, " + days + " jours, " +
+                formatNumber(hours) + ":" + formatNumber(minutes) + ":" + formatNumber(seconds);
+
+            if (remainingTime < 0) {
+                countdownElement.innerHTML = "Compte à rebours terminé !";
+                clearInterval(countdownInterval);
+            }
+        }
+
+        updateCountdown();
+        var countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 
     @include('layouts.footer')

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EnterpriseUpdateRequest;
 use App\Models\Enterprise;
+use App\Models\Phase;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class EnterpriseController extends Controller
         $enterprises = Enterprise::where('state', 'ACTIF')->paginate(3);
 
         foreach ($enterprises as $enter) {
-            if ($enter->objectif ==! 0) {
+            if ($enter->objectif == !0) {
                 $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
             } else {
                 $avancement = 0;
@@ -52,9 +54,12 @@ class EnterpriseController extends Controller
             }
 
             $enter->date = $nb_unite_temps . " " . $unite_temps;
+
+            $phase = Phase::select('date_fin')->where('enterprise_id', $enter->id)->where('statut_phase', "En-cour")->first();
+            $date = $phase->date_fin;
         }
 
-        return view('welcome', compact('enterprises'));
+        return view('welcome', compact('enterprises', 'date'));
     }
 
     public function show($enterprises) // Route binding for enterprises
@@ -153,9 +158,8 @@ class EnterpriseController extends Controller
     {
         $enterprises = Enterprise::where('state', 'ACTIF')->get();
 
-
         foreach ($enterprises as $enter) {
-             if ($enter->objectif ==! 0) {
+            if ($enter->objectif == !0) {
                 $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
             } else {
                 $avancement = 0;
@@ -195,15 +199,16 @@ class EnterpriseController extends Controller
             }
 
             $enter->date = $nb_unite_temps . " " . $unite_temps;
-        } 
 
-        return view('projet', compact('enterprises'));
+            $phase = Phase::select('date_fin')->where('enterprise_id', $enter->id)->where('statut_phase', "En-cour")->first();
+            $date = $phase->date_fin;
+        }
+        
+        return view('projet', compact('enterprises', 'date'));
     }
 
     public function about()
     {
         return view('about');
     }
-
-
 }

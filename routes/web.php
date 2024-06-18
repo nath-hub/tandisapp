@@ -90,8 +90,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/{invest}/edit', [InvestController::class, 'edit'])->name('invest.edit');
         Route::put('/{invest}/update', [InvestController::class, 'update'])->name('invest.update');
         Route::delete('/{invest}/delete', [InvestController::class, 'destroy'])->name('invest.destroy');
-        Route::get('generate', [InvestController::class, 'succes']);
-        Route::get('view-pdf', [ InvestController::class, 'viewPDF']);
+        Route::get('succes', [InvestController::class, 'succes']);
+        Route::get('cancel', [ InvestController::class, 'cancel']);
         });
 });     
 

@@ -7,10 +7,10 @@
   <title>contrat</title>
 </head>
 <body>
-  <h3>Cher(e) {{$user->name}}, </h3>
+  <h3>Mr/Mme , </h3>
 
    <p>
-    Nous sommes ravis de vous accueillir en tant qu’investisseur dans notre entreprise. Votre confiance en notre vision et notre projet est extrêmement précieuse pour nous.
+    Nous sommes ravis de vous accueillir en tant qu’investisseur dans notre entreprise. Votre confiance en notre vision et notre projet est extrêmement précieuse pour nous. Allez dans votre compte telecharger la facture et le contrat
     
     Conformément au contrat d’investissement que nous avons établi, veuillez trouver ci-joint une copie du contrat. Ce document détaille les termes et conditions de votre investissement, y compris les droits, les obligations et les garanties associés.
     

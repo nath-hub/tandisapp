@@ -16,8 +16,7 @@ class Action {
     public $name_enterprise;
     public $phase;
     public $statut_phase;
-    public $recu; 
-    public $contrat; 
+    public $recu;  
     public $created_at;
 
 }
@@ -53,6 +52,8 @@ class HomeController extends Controller
 
         $data = new stdClass();
         $actionObjects = [];
+        $contrat = "";
+
 
         if (count($invests) > 0) { 
  
@@ -63,7 +64,7 @@ class HomeController extends Controller
                 $action->created_at = $actionData["created_at"];
                 $action->nombre_action = $actionData["nombre_action"];
                 $action->recu = $actionData["recu"];
-                $action->contrat = $actionData["contrat"];
+                $contrat = $actionData["contrat"];
 
                 $enterprise = Enterprise::where('id', $actionData->enterprise_id)->first();
                 $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
@@ -73,6 +74,8 @@ class HomeController extends Controller
                 $action->statut_phase = $phase->statut_phase;
                 $actionObjects[] = $action;
             }
+ 
+ 
         } else {
             $invests = null;
             $entreprises = null;
@@ -102,12 +105,12 @@ class HomeController extends Controller
         //     $invests = null;
         //     $items = null;
         //     $phase = null;
-        // };
-
+        // }; 
         return view('home', [
             'user' => $user,
             'photo' => asset("$user->photo"),
             'invest' => $actions, 
+            'contrat' =>$contrat,
             'enterprise' => $monEntreprise, 
         ]);
     }

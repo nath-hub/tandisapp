@@ -169,8 +169,8 @@
                 <strong>{{$user->email}}</strong>
             </p>
             <p>En effet,</p>
-            <p>Le soussigné détient <strong>{{$data->nombre_action}}</strong> parts dans la société pour un montant total investi de <strong>{{$data->total_payer}}</strong>
-                en raison de <strong>{{$data->prix_action}}</strong> l'action</p>
+            <p>Le soussigné détient <strong>{{$action->nombre_action}}</strong> parts dans la société pour un montant total investi de <strong>{{$action->total_payer}}</strong>
+                en raison de <strong>{{$action->prix_action}}</strong> l'action</p>
             <p>En signant le présent contrat de souscription, le soussigné reconnait que la société se fonde sur
                 l’exactitude et l’intégrité du respect de ses obligations prévues par les lois sur les titres
                 applicables
@@ -204,6 +204,13 @@
 
             <div class="align">
                 <p class="invest">L'investisseur</p>
+
+                <br> <br> <br>
+
+                <p style="color:#037b13;">Societe Cooperative avec Conseil d'administration</p>
+                <p style="color:#037b13;">Tandis COOP-CA</p>
+                <p style="color:#037b13;">N : 24/042/CMR/IJ/01/004/CCA/002004/002004001</p>
+                <p style="color:#037b13;">Siege social : Douala-Cameroun</p>
             </div>
 
             <div class="align">
