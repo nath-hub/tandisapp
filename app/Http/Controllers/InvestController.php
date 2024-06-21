@@ -42,8 +42,7 @@ class InvestController extends Controller
     public function create($enterprise)
     {
 
-        if (auth()->user()->cnirecto !== null && auth()->user()->cniverso !== null) {
-
+         
             $enterprise = Enterprise::where('id', $enterprise)->first();
 
             $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
@@ -51,11 +50,7 @@ class InvestController extends Controller
             $user = auth()->user();
 
             return view('invest.create', compact('user', 'enterprise', 'phase'));
-        } else {
-            $enterprises = Enterprise::all();
-            return redirect()->route('home.projet', compact('enterprises'))
-                ->with("error", "Veuillez remplir toutes vos informations personnel avant d'investir, surtout une copie de votre cni");
-        }
+         
     }
 
     public function store(Request $request, $enterprise)

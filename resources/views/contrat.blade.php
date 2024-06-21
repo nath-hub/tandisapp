@@ -216,7 +216,7 @@
             <div class="align">
 
                 <p class="enter">L'entreprise</p>
-                <img class="img" src="https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/sign.png" alt="" />
+                <img class="img" src="https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/signa.png" alt="" />
             </div>
 
             <div class="space"></div>

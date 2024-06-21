@@ -56,7 +56,7 @@ class EnterpriseController extends Controller
             $enter->date = $nb_unite_temps . " " . $unite_temps;
 
             $phase = Phase::select('date_fin')->where('enterprise_id', $enter->id)->where('statut_phase', "En-cour")->first();
-            $date = $phase->date_fin;
+            $date = $phase->date_fin; 
         }
 
         return view('welcome', compact('enterprises', 'date'));
