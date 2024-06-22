@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer("total_payer");
             $table->string("recu")->nullable();
             $table->string("contrat")->nullable();
+            $table->enum('state', [1, 0])->default(0);
 
             $table->index(["enterprise_id"], "fk_enterprise_users");
             $table->index(["user_id"], "fk_user_enterprises");

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\Enterprise;
 use App\Models\Phase;
 use Stevebauman\Location\Facades\Location;
+
 // use PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Cache;
@@ -42,15 +43,13 @@ class InvestController extends Controller
     public function create($enterprise)
     {
 
-         
-            $enterprise = Enterprise::where('id', $enterprise)->first();
+        $enterprise = Enterprise::where('id', $enterprise)->first();
 
-            $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
+        $phase = Phase::where('enterprise_id', $enterprise->id)->where('statut_phase', "En-cour")->first();
 
-            $user = auth()->user();
+        $user = auth()->user();
 
-            return view('invest.create', compact('user', 'enterprise', 'phase'));
-         
+        return view('invest.create', compact('user', 'enterprise', 'phase'));
     }
 
     public function store(Request $request, $enterprise)
@@ -68,8 +67,8 @@ class InvestController extends Controller
 
         $user = auth()->user();
 
-        $ip = $request->ip();
-        // $ip = '129.0.205.108';
+        // $ip = $request->ip();
+        $ip = '129.0.205.108';
         $currentUserInfo = Location::get($ip);
 
         $data = new stdClass();
@@ -83,62 +82,55 @@ class InvestController extends Controller
 
         $random = Str::upper(Str::random(15));
 
-        Cache::add('data', $data);
+        $enterprise->investisseurs()->attach($user, [
+            'prix_action' => $data->prix_action,
+            'nombre_action' => $data->nombre_action,
+            "total_payer" => $data->total_payer,
+            "phase_id" => $data->phases_id,
+            'created_at' => $data->created_at,
+        ]);
 
-        $data = array(
-            'amount' => $request->total_payer,
-            'currency_code' => $currentUserInfo->currencyCode,
-            'ccode' => $currentUserInfo->countryCode,
-            'lang' => 'fr',
-            'item_ref' => $random,
-            'item_name' => "Achat d'action",
-            'email' => $user->email,
-            'phone' => $user->phone,
-            'first_name' => $user->name,
-            'public_key' => 'PK_K7TagYkeP3pACYC8vaJ8',
-            'logo' => 'https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im9.png'
-        );
+        // $data = array(
+        //     'amount' => $request->total_payer,
+        //     'currency_code' => $currentUserInfo->currencyCode,
+        //     'ccode' => $currentUserInfo->countryCode,
+        //     'lang' => 'fr',
+        //     'item_ref' => $random,
+        //     'item_name' => "Achat d'action",
+        //     'email' => $user->email,
+        //     'phone' => $user->phone,
+        //     'first_name' => $user->name,
+        //     'public_key' => 'PK_K7TagYkeP3pACYC8vaJ8',
+        //     'logo' => 'https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im9.png'
+        // );
 
-        $curl = curl_init();
+        // $curl = curl_init();
 
-        curl_setopt_array(
-            $curl,
-            array(
-                CURLOPT_URL => 'https://www.paymooney.com/api/v1.0/payment_url',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_HTTPHEADER => array("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
-                CURLOPT_POSTFIELDS => $data,
-            )
-        );
+        // curl_setopt_array(
+        //     $curl,
+        //     array(
+        //         CURLOPT_URL => 'https://www.paymooney.com/api/v1.0/payment_url',
+        //         CURLOPT_RETURNTRANSFER => true,
+        //         CURLOPT_ENCODING => "",
+        //         CURLOPT_MAXREDIRS => 10,
+        //         CURLOPT_TIMEOUT => 0,
+        //         CURLOPT_FOLLOWLOCATION => true,
+        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //         CURLOPT_CUSTOMREQUEST => "POST",
+        //         CURLOPT_HTTPHEADER => array("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"),
+        //         CURLOPT_POSTFIELDS => $data,
+        //     )
+        // );
 
-        $response = curl_exec($curl);
+        // $response = curl_exec($curl);
 
-        dd($response);
+        // dd($response);
 
-        curl_close($curl);
+        // curl_close($curl);
 
-        $rep = json_decode($response);
+        // $rep = json_decode($response);
 
-        if ($rep->response == "success") {
-
-            return redirect($rep->payment_url);
-        } else {
-            return redirect()->route('home.projet')->with([
-                'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
-            ]);
-        }
-    }
-
-    public function succes()
-    {
-
-        $user = auth()->user();
+        // if ($rep->response == "success") {
 
         $invests = Invest::where('user_id', $user->id)->get();
 
@@ -146,14 +138,12 @@ class InvestController extends Controller
         $action->nombre_action = 0;
         $action->prix_action = 0;
         $action->total_payer = 0;
-        
+
         foreach ($invests as $invest) {
             $action->nombre_action += $invest->nombre_action;
             $action->prix_action = $invest->prix_action;
             $action->total_payer += $invest->total_payer;
         }
-           
-        $data = Cache::get('data');
 
         $data->sous_total = $data->total_payer;
 
@@ -163,13 +153,9 @@ class InvestController extends Controller
 
         $data->total_payer = $data->total_payer + $remise;
 
-        $data->image = "https://raw.githubusercontent.com/nath-hub/tandisapp/devellop/public/assets/images/im2.png";
-
-        $enterprise = Enterprise::where('id', $data->enterprise_id)->first();
-
         $pdf = PDF::loadView('facture', compact('data', 'enterprise', 'user'))->setOptions(['isHtml5ParserEnabled' => true]);
 
-        $contrat = PDF::loadView('contrat', compact('data','action' , 'enterprise', 'user'));
+        $contrat = PDF::loadView('contrat', compact('data', 'action', 'enterprise', 'user'));
 
 
         $num = mt_rand(100000, 999999);
@@ -178,7 +164,7 @@ class InvestController extends Controller
 
         $pdf->save(storage_path('app/public/recu/' . $name . '.pdf'));
 
-        $storagePath = ('contrat/' . $name . '.pdf');
+        $storagePath = ('recu/' . $name . '.pdf');
 
         $names = 'contrat' . $user->id;
 
@@ -186,55 +172,35 @@ class InvestController extends Controller
 
         $contratPath = ('contrat/' . $names . '.pdf');
 
-        // $content = $pdf->download($name)->getOriginalContent();
-
-        // $contentContrat = $contrat->download($names)->getOriginalContent();
-
-        // Storage::put('public/recu/' . $name . '.pdf', $content);
-
-        // Storage::put('public/contrat/' . $names . '.pdf', $contentContrat);
-
-        // $storagePath = ('recu/' . $name . '.pdf');
-
-
-
-        // $contratPath = ('contrat/' . $names . '.pdf');
-
-
         $record = Enterprise::find($enterprise->id);
         $record->montant_actuel =  $enterprise->montant_actuel + $data->sous_total;
         $record->save();
 
-        // dd($storagePath, $contratPath);
-
-        $enterprise->investisseurs()->attach($user, [
-            'prix_action' => $data->prix_action,
-            'nombre_action' => $data->nombre_action,
-            "total_payer" => $data->total_payer,
-            'recu' => $storagePath,
-            'contrat' => $contratPath,
-            "phase_id" => $data->phases_id,
-            'created_at' => Carbon::now(),
+        $enterprise->investisseurs()->syncWithPivotValues($user, [
+            'state' => 1,
         ]);
 
-        // Mail::to($user)->send(new OrderShipped($storagePath, $contratPath, $user));
-        $datas = [
-            'to' => $user->email,
-            'subject' => 'Facture de paiement',
-        ];
-        // dd($datas, $contratPath, $user->email);
-        // Mail::send('mail', $datas, function ($message) use ($datas, $contratPath, $user) {
-        //     $message->to($datas['to'])
-        //         ->subject($datas['subject']);
-        //     // ->attach(Storage::path($contratPath));
-        // });
 
         return view('invest.succes', [
             'success' => "Felicitations, vous vennez d'acheter des actions !!!!!!!!!",
             'data' => $data,
+            'recu' => $storagePath,
+            'contrat' => $contratPath,
             'enterprise' => $enterprise,
             'user' => $user
         ]);
+        
+        // } else {
+        //     return redirect()->route('home.projet')->with([
+        //         'error' => "Echec de l'enregistrement! veuillez renseigner le prix et le nombre d'action ou verifier votre connexion internet"
+        //     ]);
+        // }
+    }
+
+    public function succes()
+    { 
+
+        return view('invest.succes' );
     }
 
     public function cancel()

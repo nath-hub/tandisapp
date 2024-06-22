@@ -72,16 +72,6 @@ class EnterpriseController extends Controller
     }
     public function edit(Enterprise $enterprise)
     {
-        // if (auth()->check()) {
-        //     return view('page-cible');
-        // } else {
-        //     if (! User::exists()) {
-        //         return redirect('/inscription'); // Redirection vers la page d'inscription
-        //     } else {
-        //         return redirect('/connexion'); // Redirection vers la page de connexion
-        //     }
-        // }
-
         return view('enterprise.edit', [
             'enterprise' => $enterprise,
         ]);
@@ -89,8 +79,7 @@ class EnterpriseController extends Controller
 
     public function update(Request $request, Enterprise $enterprise)
     {
-        // dd($request->all());
-
+    
         if (empty($request->file('livress'))) {
             $livre = $enterprise->livres;
         } else {

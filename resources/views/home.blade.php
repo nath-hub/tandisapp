@@ -66,11 +66,7 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="gy-3">
-                            @if ($user->cnirecto === null || $user->cniverso === null)
-                                <div class="alert alert-danger">
-                                    {{ __("Completez les informations de votre compte avant d'investir") }}
-                                </div>
-                            @endif
+                          
                             <table class="table caption-top">
                                 <caption>Informations de utilisateur</caption>
 
@@ -308,11 +304,7 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="py-5">
-                            @if ($user->cnirecto === null || $user->cniverso === null)
-                                <div class="alert alert-danger">
-                                    {{ __("Completez les informations de votre compte avant d'investir") }}
-                                </div>
-                            @endif
+                          
                             <table class="table caption-top">
                                 <caption>Informations de utilisateur</caption>
 
