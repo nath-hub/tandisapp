@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EnterpriseController;
 use App\Http\Controllers\ForgotPassword;
 use App\Http\Controllers\InvestController;
-use App\Http\Controllers\PhaseController; 
+use App\Http\Controllers\PhaseController;
 use App\Http\Controllers\UserController;
 use Laravel\Fortify\Http\Controllers\ProfileInformationController;
 
@@ -27,7 +27,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
-->middleware('auth', 'verified');
+    ->middleware('auth', 'verified');
 
 Route::view('profile/edit',  'profile.edit')->name('profile.edit')->middleware('auth');
 
@@ -64,22 +64,21 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('{enterprise}/show', [EnterpriseController::class, 'show'])->name('enterprise.show');
         Route::get('/{enterprise}/edit', [EnterpriseController::class, 'edit'])->name('enterprise.edit')->middleware('auth');
         Route::put('/{enterprise}/update', [EnterpriseController::class, 'update'])->name('enterprise.update');
- 
+
         Route::get('/service', [EnterpriseController::class, 'service'])->name('home.service');
         Route::get('/contact', [EnterpriseController::class, 'contact'])->name('home.contact');
         Route::get('/projet', [EnterpriseController::class, 'projet'])->name('home.projet');
         Route::get('/about', [EnterpriseController::class, 'about'])->name('home.about');
-
     });
 
     Route::group(['prefix' => 'phase'], function () {
-    Route::get('/', [PhaseController::class, 'index'])->name('phases.index');
-    Route::get('/create', [PhaseController::class, 'create'])->name('phases.create');
-    Route::post('store/', [PhaseController::class, 'store'])->name('phases.store');
-    Route::get('/{phase}/show', [PhaseController::class, 'show'])->name('phases.show');
-    Route::get('/{phase}/edit', [PhaseController::class, 'edit'])->name('phases.edit')->middleware('auth');
-    Route::put('/{phase}/update', [PhaseController::class, 'update'])->name('phases.update')->middleware('auth');
-    Route::delete('/{phase}/delete', [PhaseController::class, 'destroy'])->name('phases.destroy')->middleware('auth');
+        Route::get('/', [PhaseController::class, 'index'])->name('phases.index');
+        Route::get('/create', [PhaseController::class, 'create'])->name('phases.create');
+        Route::post('store/', [PhaseController::class, 'store'])->name('phases.store');
+        Route::get('/{phase}/show', [PhaseController::class, 'show'])->name('phases.show');
+        Route::get('/{phase}/edit', [PhaseController::class, 'edit'])->name('phases.edit')->middleware('auth');
+        Route::put('/{phase}/update', [PhaseController::class, 'update'])->name('phases.update')->middleware('auth');
+        Route::delete('/{phase}/delete', [PhaseController::class, 'destroy'])->name('phases.destroy')->middleware('auth');
     });
 
     Route::group(['prefix' => 'invest'], function () {
@@ -90,9 +89,16 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/{invest}/edit', [InvestController::class, 'edit'])->name('invest.edit');
         Route::put('/{invest}/update', [InvestController::class, 'update'])->name('invest.update');
         Route::delete('/{invest}/delete', [InvestController::class, 'destroy'])->name('invest.destroy');
+<<<<<<< HEAD
         Route::get('succes', [InvestController::class, 'succes']);
         Route::get('cancel', [ InvestController::class, 'cancel']);
         });
 });     
 
 Route::get('pdf', [InvestController::class, 'pdf']);
+=======
+        Route::get('generate', [InvestController::class, 'succes']);
+        Route::get('view-pdf', [InvestController::class, 'viewPDF']);
+    });
+});
+>>>>>>> cbe4112 (update)

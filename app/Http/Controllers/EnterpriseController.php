@@ -15,7 +15,7 @@ class EnterpriseController extends Controller
     public function index()
     {
         $enterprises = Enterprise::where('state', 'ACTIF')->paginate(3);
-
+         
         foreach ($enterprises as $enter) {
             if ($enter->objectif == !0) {
                 $avancement = ($enter->montant_actuel / $enter->objectif) * 100;
@@ -55,7 +55,12 @@ class EnterpriseController extends Controller
 
             $enter->date = $nb_unite_temps . " " . $unite_temps;
 
+<<<<<<< HEAD
             $phase = Phase::select('date_fin')->where('enterprise_id', $enter->id)->where('statut_phase', "En-cour")->first();
+=======
+            $phase = Phase::where('enterprise_id', $enter->id)->where('statut_phase', "En-cour")->first();
+             
+>>>>>>> cbe4112 (update)
             $date = $phase->date_fin; 
         }
 

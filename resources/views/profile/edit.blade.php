@@ -26,7 +26,7 @@
                                         id="imageUpload" name="photo" accept="image/*"
                                         onchange="handleImageUpload(this)">
                                     @if ($errors->has('photo'))
-                                        <span class="text-danger text-left">{{ $errors->first('photo') }}</span>
+                                    <span class="text-danger text-left">{{ $errors->first('photo') }}</span>
                                     @endif
                                 </div>
                                 <label for="">
@@ -49,7 +49,7 @@
                                 changer mon mot de passe
                             </a>
                         </li>
-                       
+
                     </form>
                 </ul>
 
@@ -74,7 +74,7 @@
                                             value="{{ old('name') ?? auth()->user()->name }}" required name="name"
                                             aria-describedby="nameHelp">
                                         @if ($errors->has('name'))
-                                            <span class="text-danger text-left">{{ $errors->first('name') }}</span>
+                                        <span class="text-danger text-left">{{ $errors->first('name') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -91,9 +91,9 @@
                                         autocomplete="email" autofocus>
 
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </td>
@@ -109,7 +109,7 @@
                                             value="{{ old('phone') ?? auth()->user()->phone }}" name="phone"
                                             aria-describedby="phoneHelp">
                                         @if ($errors->has('phone'))
-                                            <span class="text-danger text-left">{{ $errors->first('phone') }}</span>
+                                        <span class="text-danger text-left">{{ $errors->first('phone') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                             value="{{ old('town') ?? auth()->user()->town }}"
                                             aria-describedby="townHelp">
                                         @if ($errors->has('town'))
-                                            <span class="text-danger text-left">{{ $errors->first('town') }}</span>
+                                        <span class="text-danger text-left">{{ $errors->first('town') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
                                             value="{{ old('country') ?? auth()->user()->country }}" name="country"
                                             aria-describedby="countryHelp">
                                         @if ($errors->has('country'))
-                                            <span class="text-danger text-left">{{ $errors->first('country') }}</span>
+                                        <span class="text-danger text-left">{{ $errors->first('country') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -154,8 +154,8 @@
                                             value="{{ old('birth_date') ?? auth()->user()->birth_date }}"
                                             name="birth_date" aria-describedby="birth_dateHelp">
                                         @if ($errors->has('birth_date'))
-                                            <span
-                                                class="text-danger text-left">{{ $errors->first('birth_date') }}</span>
+                                        <span
+                                            class="text-danger text-left">{{ $errors->first('birth_date') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
 
                         <label for="">
                             Photo profile : <input type="file" class="@error('cniverso') is-invalid @enderror"
-                            id="imageUpload" value="{{ auth()->user()->photo }}" name="photo" accept="image/*">
+                                id="imageUpload" value="{{ auth()->user()->photo }}" name="photo" accept="image/*">
                         </label>
                         <label for="">
                             CNI recto : <input type="file" class="@error('cnirecto') is-invalid @enderror"
@@ -215,15 +215,15 @@
                 </form>
 
                 <div class="col-7">
-                    
 
-                   
+
+
                     <div class="py-3">
                         <a class="btn btn-success" href="edit">
                             changer mon mot de passe
                         </a>
                     </div>
-                   
+
                 </div>
             </div>
 
@@ -250,8 +250,8 @@
                                                         value="{{ old('name') ?? auth()->user()->name }}"
                                                         name="name" aria-describedby="nameHelp">
                                                     @if ($errors->has('name'))
-                                                        <span
-                                                            class="text-danger text-left">{{ $errors->first('name') }}</span>
+                                                    <span
+                                                        class="text-danger text-left">{{ $errors->first('name') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -269,9 +269,9 @@
                                                     autocomplete="email" autofocus>
 
                                                 @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                         </td>
@@ -287,8 +287,8 @@
                                                         value="{{ old('phone') ?? auth()->user()->phone }}"
                                                         name="phone" aria-describedby="phoneHelp">
                                                     @if ($errors->has('phone'))
-                                                        <span
-                                                            class="text-danger text-left">{{ $errors->first('phone') }}</span>
+                                                    <span
+                                                        class="text-danger text-left">{{ $errors->first('phone') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -304,8 +304,8 @@
                                                         value="{{ old('town') ?? auth()->user()->town }}"
                                                         aria-describedby="townHelp">
                                                     @if ($errors->has('town'))
-                                                        <span
-                                                            class="text-danger text-left">{{ $errors->first('town') }}</span>
+                                                    <span
+                                                        class="text-danger text-left">{{ $errors->first('town') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -320,8 +320,8 @@
                                                         value="{{ old('country') ?? auth()->user()->country }}"
                                                         name="country" aria-describedby="countryHelp">
                                                     @if ($errors->has('country'))
-                                                        <span
-                                                            class="text-danger text-left">{{ $errors->first('country') }}</span>
+                                                    <span
+                                                        class="text-danger text-left">{{ $errors->first('country') }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -337,8 +337,8 @@
                                                         value="{{ old('birth_date') ?? auth()->user()->birth_date }}"
                                                         name="birth_date" aria-describedby="birth_dateHelp">
                                                     @if ($errors->has('birth_date'))
-                                                        <span
-                                                            class="text-danger text-left">{{ $errors->first('birth_date') }}</span>
+                                                    <span
+                                                        class="text-danger text-left">{{ $errors->first('birth_date') }}</span>
                                                     @endif
                                                 </div>
                                             </div>

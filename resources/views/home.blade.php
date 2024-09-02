@@ -358,21 +358,42 @@
                     <div class="accordion-body">
                         <div class="container overflow-hidden">
                             <div class="card table-responsive">
-                                <h3>Mes investissements</h3>
-                                <table class="table table-striped table-hover">
-                                    <thead class="table-primary">
-                                        <tr>
-                                            <th scope="col-2">Entreprise</th>
-                                            <th scope="col-3">Phase</th>
-                                            <th scope="col-2">Montant</th>
-                                            <th scope="col-2">Qté</th>
-                                            <th scope="col-3">Date</th>
-                                            <th scope="col-3">Statut</th>
-                                            <th scope="col-2">Recu</th>
-                                            <th scope="col-2">Contrat</th>
-                                        </tr>
-                                    </thead>
+                                 <h4 class="py-3"> Mes investissements </h4>
+                        <table class="table table-striped table-hover">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th scope="col-3">Entreprise</th>
+                                    <th scope="col-1">Phase</th>
+                                    <th scope="col-2">Montant</th>
+                                    <th scope="col-1">Qté</th>
+                                    <th scope="col-2">Date</th>
+                                    <th scope="col-2">Statut</th>
+                                    <th scope="col-2">Recu</th>
+                                </tr>
+                            </thead>
+                            
+                            @if (isset($invest))
+                                @foreach ($invest as $investment)
+                                    <tr>
+                                        <td>{{ $investment->name_enterprise }}</td>
+                                        <td>{{ $investment->phase }}</td>
+                                        <td>{{ $investment->prix_action }}</td>
+                                        <td>{{ $investment->nombre_action }}</td>
+                                        <td>{{ $investment->created_at }}</td>
+                                        <td>{{ $investment->statut_phase }}</td>
+                                        <td><a class="btn btn-outline-warning" href="{{ asset('storage/' . $investment->recu) }}">Lire le
+                                                PDF</a></td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="7" class="text-center">Aucun investissement trouvé</td>
+                                </tr>
+                            @endif
+                            <a class="btn btn-outline-warning" href="{{ asset('storage/' . $contrat) }}">Telecharger le
+                                Contrat</a>
 
+<<<<<<< HEAD
                                     @if (isset($invest))
                                         @foreach ($invest as $investment)
                                             <tr>
@@ -396,6 +417,9 @@
                                     <a class="btn btn-outline-warning" href="{{ asset('storage/' . $contrat) }}">Telecharger le
                                     Contrat</a>
                                 </table>
+=======
+                        </table>
+>>>>>>> cbe4112 (update)
                             </div>
                         </div>
                     </div>
